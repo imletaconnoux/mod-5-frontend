@@ -1,4 +1,6 @@
 import React from 'react'
+import { searchVideos } from '../actions/videos'
+import { connect } from 'react-redux'
 
 class YoutubeForm extends React.Component{
 
@@ -38,4 +40,12 @@ class YoutubeForm extends React.Component{
 
 }
 
-export default YoutubeForm
+function mapDispatchToProps(dispatch){
+  return {
+    searchVideos: (term) => {
+      dispatch(searchVideos(term))
+    }
+  }
+}
+
+export default connect(null, mapDispatchToProps)(YoutubeForm)
