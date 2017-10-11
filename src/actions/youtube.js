@@ -13,6 +13,7 @@ function searchedVideos(videos){
 
 export function searchVideos(term){
   return function(dispatch) {
+    
     dispatch(searchingVideos())
     fetch(`https://www.googleapis.com/youtube/v3/search?&q=${term}&key=AIzaSyCB6Tj0pbJk3_X0rbht442Ar-T93EAF-M0&type=video&part=snippet,id&order=relevance&maxResults=10`)
     .then((res) => res.json())

@@ -1,5 +1,5 @@
 import React from 'react'
-import { searchVideos } from '../actions/videos'
+import { searchVideos } from '../../actions/youtube'
 import { connect } from 'react-redux'
 
 class YoutubeForm extends React.Component{
@@ -29,6 +29,7 @@ class YoutubeForm extends React.Component{
   }
 
   render(){
+    
     return(
       <form onSubmit={this.handleSearch}>
         <input type="text" value={this.state.searchInput} onChange={this.handleInputChange} placeholder="Search for YouTube videos"/>
