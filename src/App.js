@@ -30,9 +30,9 @@ class App extends Component {
 
 
         <Route path="/" component={Nav}/>
-        <Route exact path="/" component={ YoutubeContainer } />
-        <Route exact path="/collections" component={ CollectionsContainer } />
-      
+        <Route path="/" component={ YoutubeContainer } />
+        <Route path="/collections" component={ CollectionsContainer } />
+
 
       </div>
     );

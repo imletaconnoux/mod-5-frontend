@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { Route } from 'react-router-dom'
 import CollectionsList from './CollectionsList'
 import { fetchCollections } from '../../actions/collections'
+import CollectionDetail from './CollectionDetail'
 
 class CollectionsContainer extends React.Component{
 
@@ -21,7 +22,14 @@ class CollectionsContainer extends React.Component{
 
       <Grid>
         <Grid.Column width={3}>
-        <CollectionsList collections={this.props.collections}/>
+        <Route exact path="/collections" render={(props) => <CollectionsList collections={this.props.collections} {...props} />}/>
+        <Route path="/collections/:id" render={(routeProps) => {
+          const id = this.props.match.params.id
+          const collection = this.props.collections.filter((collection) => {
+            return collection.id === id
+          })
+          return <CollectionDetail collection={collection[0]} {...routeProps}/>
+        }} />
 
 
           </Grid.Column>
