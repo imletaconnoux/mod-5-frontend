@@ -15,7 +15,8 @@ function createVideo(video) {
   }
 }
 
-export function createCollection (name){
+export function createCollection(name){
+  debugger
   const body = JSON.stringify({user_id: 1, name: name})
   return function(dispatch){
     fetch(`http://localhost:3000/api/v1/collections`, {
@@ -28,8 +29,6 @@ export function createCollection (name){
     })
     .then((res) => res.json())
     .then((json) => {
-      console.log(json)
-
       dispatch(createdCollection(json))
       return json
     })
@@ -50,12 +49,11 @@ export function createCollectionWithVideo(name, video){
     .then((res) => res.json())
     .then((json) => {
       console.log(json)
-
       dispatch(createdCollection(json))
       dispatch(addVideo(video, json))
     })
-    }
-    }
+  }
+}
 
 export function addVideo(video, collection){
 

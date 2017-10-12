@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Button, Icon, Image } from 'semantic-ui-react'
+import { Grid, Card, Button, Icon, Image } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 class CollectionItem extends React.Component{
@@ -9,16 +9,18 @@ class CollectionItem extends React.Component{
     const { collection } = this.props
     console.log(collection.image)
     return(
-      <div>
-        <Card>
-          <Image src={collection.image} />
-          <Card.Content>
-            <Card.Header>
-          <Link to={"/collections/" + collection.id}>{collection.name}</Link>
-        </Card.Header>
-        </Card.Content>
-        </Card>
-      </div>
+      <Grid.Column width={5}>
+        <Link to={"/collections/" + collection.id}>
+          <Image
+            src={collection.image}
+            size='medium'
+            bordered
+            label={{ as: 'a', color: 'orange', content: `${collection.name}`, ribbon: true }}
+          />
+
+        </Link>
+
+      </Grid.Column>
     )
   }
 

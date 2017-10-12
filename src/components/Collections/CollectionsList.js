@@ -15,9 +15,9 @@ const CollectionsList = (props) => {
   return (
 
     <Grid>
-     <Grid.Row>
+
       {collections}
-      </Grid.Row>
+
    </Grid>
   )
 
