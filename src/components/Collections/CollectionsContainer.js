@@ -23,18 +23,23 @@ class CollectionsContainer extends React.Component{
       <Grid>
         <Grid.Column width={3}>
         <Route exact path="/collections" render={(props) => <CollectionsList collections={this.props.collections} {...props} />}/>
-        <Route path="/collections/:id" render={(routeProps) => {
-          const id = this.props.match.params.id
-          const collection = this.props.collections.filter((collection) => {
-            return collection.id === id
-          })
-          return <CollectionDetail collection={collection[0]} {...routeProps}/>
-        }} />
-
 
           </Grid.Column>
 
         </Grid>
+        <Route path="/collections/:id" render={(routeProps) => {
+          
+          const id = routeProps.match.params.id
+
+          const collection = this.props.collections.filter((collection) => {
+
+            return collection.id === parseInt(id)
+
+
+
+          })
+          return <CollectionDetail collection={collection[0]} {...routeProps}/>
+        }} />
       </div>
 
     )
