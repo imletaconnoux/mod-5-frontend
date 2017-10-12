@@ -3,15 +3,30 @@ import { Grid, List, Loader} from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { Route } from 'react-router-dom'
 import CollectionsList from './CollectionsList'
+import { fetchCollections } from '../../actions/collections'
 
 class CollectionsContainer extends React.Component{
 
+
+  componentDidMount() {
+    this.props.fetchCollections()
+  }
+
   render(){
-    console.log(this.props)
+    console.log(this.props.collections)
+
     return(
       <div>
-        <CollectionsList collections={this.props.collections} />
 
+
+      <Grid>
+        <Grid.Column width={3}>
+        <CollectionsList collections={this.props.collections}/>
+
+
+          </Grid.Column>
+
+        </Grid>
       </div>
 
     )
@@ -19,9 +34,20 @@ class CollectionsContainer extends React.Component{
 
 }
 
+
+
+
 function mapStateToProps(state){
   return {
     collections: state.collections.list
   }
 }
-export default connect(mapStateToProps)(CollectionsContainer)
+
+function mapDispatchToProps(dispatch){
+  return {
+    fetchCollections: () => {
+      dispatch(fetchCollections())
+    }
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(CollectionsContainer)

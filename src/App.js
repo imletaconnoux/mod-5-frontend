@@ -5,7 +5,7 @@ import YoutubeContainer from './components/Youtube/YoutubeContainer.js'
 import './App.css';
 import 'semantic-ui-css/semantic.min.css';
 import Nav from './components/Nav'
-import { Route } from 'react-router-dom'
+import { Route, Redirect, Link} from 'react-router-dom'
 import { fetchCollections } from './actions/collections'
 import { connect } from 'react-redux'
 import thunk from 'redux-thunk'
@@ -13,31 +13,37 @@ import CollectionsContainer from './components/Collections/CollectionsContainer.
 class App extends Component {
 
   componentDidMount(){
-
-    this.props.fetchCollections()
+    console.log("Mounting")
+    //this.props.fetchCollections()
   }
   render() {
-    console.log(this.props)
+
+
+    console.log("Rendering",this.props)
 
     return (
+
       <div className="App">
 
-          <Route path="/" component={Nav} />
 
-        <YoutubeContainer />
-        <CollectionsContainer />
+
+
+
+        <Route path="/" component={Nav}/>
+        <Route exact path="/" component={ YoutubeContainer } />
+        <Route exact path="/collections" component={ CollectionsContainer } />
+      
+
       </div>
     );
   }
 }
 
-function mapDispatchToProps(dispatch){
-  return {
-    fetchCollections: () => {
-      dispatch(fetchCollections())
-    }
-  }
-}
 
 
-export default connect(null, mapDispatchToProps)(App);
+
+
+
+
+export default App;
+// export default App
