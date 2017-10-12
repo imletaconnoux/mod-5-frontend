@@ -1,6 +1,7 @@
 import React from 'react'
 import { searchVideos } from '../../actions/youtube'
 import { connect } from 'react-redux'
+import { Header, Icon, Popup } from 'semantic-ui-react'
 
 class YoutubeForm extends React.Component{
 
@@ -29,13 +30,23 @@ class YoutubeForm extends React.Component{
   }
 
   render(){
-    
-    return(
-      <form onSubmit={this.handleSearch}>
-        <input type="text" value={this.state.searchInput} onChange={this.handleInputChange} placeholder="Search for YouTube videos"/>
-        <input type="submit" value="Search"/>
 
-      </form>
+    return(
+      <div>
+        <Header as='h2' icon>
+          <Icon name='video play outline' color='orange' />
+          The YouTubist
+          <Header.Subheader>
+            Search for videos below. Save the ones your like to your collections.
+          </Header.Subheader>
+        </Header>
+
+        <form onSubmit={this.handleSearch}>
+          <input type="text" value={this.state.searchInput} onChange={this.handleInputChange} placeholder="Enter keyword"/>
+          <input type="submit" value="Search"/>
+
+        </form><br/>
+      </div>
     )
   }
 

@@ -1,5 +1,7 @@
 import React from 'react'
-import { Card, Button, Icon, Divider, Segment} from 'semantic-ui-react'
+import PopUp from './PopUp'
+import { Card, Button, Icon, Divider, Segment, Popup, Form} from 'semantic-ui-react'
+import { connect } from 'react-redux'
 
 class YoutubeItem extends React.Component{
 
@@ -8,7 +10,8 @@ class YoutubeItem extends React.Component{
 
     const link = `https://www.youtube.com/embed/${this.props.video.id.videoId}`
 
-    console.log(link)
+
+
     return (
       <div>
 
@@ -19,8 +22,16 @@ class YoutubeItem extends React.Component{
 
         <Segment raised>
         {this.props.video.snippet.title}
-        <Icon name="bookmark"/>
+          <Popup
+            trigger={<Icon name="bookmark" />}
+            hoverable
+          >
+            <Form>
+              <PopUp collections={this.props.collections} video={this.props.video} />
+            </Form>
+          </Popup>
         </Segment>
+
 
         <Divider clearing />
       </div>
@@ -28,4 +39,12 @@ class YoutubeItem extends React.Component{
   }
 }
 
-export default YoutubeItem
+function mapStateToProps(state){
+  return{
+    collections: state.collections.list
+  }
+}
+
+
+
+export default connect(mapStateToProps)(YoutubeItem)
