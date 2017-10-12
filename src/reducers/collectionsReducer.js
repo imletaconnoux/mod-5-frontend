@@ -3,8 +3,8 @@ function collectionsReducer(state = { list: [] }, action){
     case "FETCHED_COLLECTIONS":
       return Object.assign({}, state, {list: action.payload})
 
-    case "CREATE_COLLECTION":
-      return Object.assign({}, state, {list: [...state.collections, action.payload: {} ]})
+    case "CREATED_COLLECTION":
+      return Object.assign({}, state, {list: [...state.list, action.payload: {} ]})
 
     default:
       return state

@@ -2,8 +2,11 @@ import React from 'react'
 import PopUp from './PopUp'
 import { Card, Button, Icon, Divider, Segment, Popup, Form} from 'semantic-ui-react'
 import { connect } from 'react-redux'
-
+import { createCollectionWithVideo } from '../../actions/collections'
 class YoutubeItem extends React.Component{
+
+
+
 
   render(){
     console.log(this.props)
@@ -24,10 +27,17 @@ class YoutubeItem extends React.Component{
         {this.props.video.snippet.title}
           <Popup
             trigger={<Icon name="bookmark" />}
+            size='huge'
             hoverable
           >
             <Form>
+              <Form.Field>
+                <label>Save to an existing collection:</label>
+              </Form.Field>
               <PopUp collections={this.props.collections} video={this.props.video} />
+
+
+
             </Form>
           </Popup>
         </Segment>
@@ -44,6 +54,7 @@ function mapStateToProps(state){
     collections: state.collections.list
   }
 }
+
 
 
 

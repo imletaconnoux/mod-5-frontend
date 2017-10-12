@@ -1,10 +1,10 @@
 
 
-export function createCollection(name){
+export function createdCollection(collection){
 
   return{
-    type: "SEARCHED_VIDEOS",
-    payload: name
+    type: "CREATED_COLLECTION",
+    payload: collection
   }
 }
 
@@ -15,7 +15,47 @@ function createVideo(video) {
   }
 }
 
+export function createCollection (name){
+  const body = JSON.stringify({user_id: 1, name: name})
+  return function(dispatch){
+    fetch(`http://localhost:3000/api/v1/collections`, {
+      method: 'post',
+      body: body,
+      headers: {
+       "Accept": "application/json",
+       "Content-Type":"application/json"
+     }
+    })
+    .then((res) => res.json())
+    .then((json) => {
+      console.log(json)
 
+      dispatch(createdCollection(json))
+      return json
+    })
+  }
+}
+
+export function createCollectionWithVideo(name, video){
+  const body = JSON.stringify({user_id: 1, name: name})
+  return function(dispatch){
+    fetch(`http://localhost:3000/api/v1/collections`, {
+      method: 'post',
+      body: body,
+      headers: {
+       "Accept": "application/json",
+       "Content-Type":"application/json"
+     }
+    })
+    .then((res) => res.json())
+    .then((json) => {
+      console.log(json)
+
+      dispatch(createdCollection(json))
+      dispatch(addVideo(video, json))
+    })
+    }
+    }
 
 export function addVideo(video, collection){
 
@@ -41,6 +81,7 @@ export function addVideo(video, collection){
 }
 
 function addToCollection(video, collection){
+  debugger
   const body = JSON.stringify({video_id: video.id, collection_id: collection.id})
   return function(dispatch){
     fetch(`http://localhost:3000/api/v1/video_collections`, {
@@ -58,7 +99,7 @@ function addToCollection(video, collection){
   }
 }
 
-//function addedToCollection
+
 function fetchedCollections(collections){
   return {
     type: "FETCHED_COLLECTIONS",
@@ -66,15 +107,6 @@ function fetchedCollections(collections){
   }
 }
 
-//call when you load a collection page
-export function fetchCollectionVideos(collectionObjects){
-  return function(dispatch){
-    collectionObjects.forEach((collection) => {
-      console.log(collection)
-    })
-
-  }
-}
 
 export function fetchCollections(){
 
