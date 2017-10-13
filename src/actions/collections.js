@@ -16,7 +16,6 @@ function createVideo(video) {
 }
 
 export function createCollection(name){
-  debugger
   const body = JSON.stringify({user_id: 1, name: name})
   return function(dispatch){
     fetch(`http://localhost:3000/api/v1/collections`, {
@@ -31,6 +30,30 @@ export function createCollection(name){
     .then((json) => {
       dispatch(createdCollection(json))
       return json
+    })
+  }
+}
+
+function deletedCollection(collection){
+  return{
+    type: "DELETED_COLLECTION",
+    payload: collection
+  }
+}
+export function deleteCollection(collection){
+  const body = JSON.stringify({id: collection.id})
+  return function(dispatch){
+    fetch(`http://localhost:3000/api/v1/collections/${collection.id}`, {
+      method: 'DELETE',
+      body: body,
+      headers: {
+       "Accept": "application/json",
+       "Content-Type":"application/json"
+     }
+    })
+    .then((res) => res.json())
+    .then((json) => {
+      dispatch(deletedCollection(json))
     })
   }
 }
@@ -114,6 +137,31 @@ export function fetchCollections(){
     .then((res) => res.json())
     .then((json) => {
       dispatch(fetchedCollections(json))
+    })
+  }
+}
+
+function updatedCollectionName(collection){
+  return {
+    type: "UPDATED_COLLECTION_NAME",
+    payload: collection
+  }
+}
+export function updateCollectionName(id, name){
+  const body = JSON.stringify({id: id, name: name})
+  return function(dispatch){
+    fetch(`http://localhost:3000/api/v1/collections/${id}`, {
+      method: 'PATCH',
+      body: body,
+      headers: {
+       "Accept": "application/json",
+       "Content-Type":"application/json"
+     }
+    })
+    .then((res) => res.json())
+    .then((json) => {
+      
+      dispatch(updatedCollectionName(json))
     })
   }
 }
