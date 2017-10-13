@@ -94,15 +94,12 @@ export function addVideo(video, collection){
     })
     .then((res) => res.json())
     .then((json) => {
-      console.log(json)
-      console.log(collection)
       dispatch(addToCollection(json, collection))
     })
   }
 }
 
 function addToCollection(video, collection){
-  debugger
   const body = JSON.stringify({video_id: video.id, collection_id: collection.id})
   return function(dispatch){
     fetch(`http://localhost:3000/api/v1/video_collections`, {
@@ -160,8 +157,34 @@ export function updateCollectionName(id, name){
     })
     .then((res) => res.json())
     .then((json) => {
-      
+
       dispatch(updatedCollectionName(json))
+    })
+  }
+}
+
+function removedVideoFromCollection(videoCollection){
+  return {
+    type: "REMOVED_VIDEO_FROM_COLLECTION",
+    payload: videoCollection
+  }
+}
+
+export function removeVideoFromCollection(collection, video){
+
+  const body = JSON.stringify({collection_id: collection.id, video_id: video.id})
+  return function(dispatch){
+    fetch(`http://localhost:3000/api/v1/video_collections/`, {
+      method: 'DELETE',
+      body: body,
+      headers: {
+       "Accept": "application/json",
+       "Content-Type":"application/json"
+     }
+    })
+    .then((res) => res.json())
+    .then((json) => {
+      dispatch(removedVideoFromCollection(json))
     })
   }
 }

@@ -18,6 +18,17 @@ function collectionsReducer(state = { list: [] }, action){
           return collection
         })
       })
+
+    case "REMOVED_VIDEO_FROM_COLLECTION":
+      return Object.assign({}, state,{
+        list: state.list.map((collection) =>{
+          if (collection.id === action.payload.collection_id){
+            return Object.assign({}, collection, {videos: collection.videos.filter((video) => video.id !== action.payload.video_id)})
+          }
+          return collection
+        })
+      })
+
     default:
       return state
   }

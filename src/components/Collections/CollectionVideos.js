@@ -6,7 +6,7 @@ const CollectionVideos = (props) => {
   console.log(props)
 
   const videoList = props.videos.map((video, index) => {
-    return <Video video={video} key={index} />
+    return <Video video={video} key={index} collection={props.collection} />
   })
   return (
 
