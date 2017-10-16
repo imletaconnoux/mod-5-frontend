@@ -32,16 +32,16 @@ function collectionsReducer(state = { list: [] }, action){
     case "UPDATED_VIDEO_COMMENT":
       return Object.assign({}, state, {
         list: state.list.map((collection) => {
-
           if (collection.id === action.collectionPayload) {
-            collection.videos.map((video) => {
+            return Object.assign({}, collection, {videos: collection.videos.map((video) => {
               if (video.id === action.videoPayload.id) {
                 return Object.assign({}, video, {comment: action.videoPayload.comment})
               }
               return video
-            })
-          }
-          return collection
+              })
+          })
+        }
+        return collection
         })
       })
 

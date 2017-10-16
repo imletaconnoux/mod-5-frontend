@@ -5,24 +5,15 @@ import { connect } from 'react-redux'
 import { fetchCollections } from '../../actions/collections'
 class CollectionDetail extends React.Component{
 
-  constructor(){
-    super()
-    this.state = {
-      collection: null
-    }
-  }
+
 
   componentDidMount(){
     this.props.fetchCollections()
-
   }
-
 
 
   render(){
     if (this.props.collections.length > 0 ){
-      console.log(this.props)
-
       const collection = this.props.collections.filter((collection) => {
         return collection.id === parseInt(this.props.match.params.id)
       })
@@ -30,21 +21,18 @@ class CollectionDetail extends React.Component{
         <div>
           <h1> Your {collection[0].name} video collection </h1>
           <CollectionVideos videos={collection[0].videos} collection={collection[0]}/>
-
-
         </div>
         )
     } else {
       return(
-      null
-    )
+        null
+      )
     }
   }
 
 }
 
 function mapStateToProps(state){
-  console.log(state)
   return {
     collections: state.collections.list
   }
