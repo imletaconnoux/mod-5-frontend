@@ -10,6 +10,8 @@ import { fetchCollections } from './actions/collections'
 import { connect } from 'react-redux'
 import thunk from 'redux-thunk'
 import CollectionsContainer from './components/Collections/CollectionsContainer.js'
+import UsersContainer from './components/Users/UsersContainer.js'
+
 class App extends Component {
 
   componentDidMount(){
@@ -32,6 +34,8 @@ class App extends Component {
         <Route path="/" component={Nav}/>
         <Route path="/" component={ YoutubeContainer } />
         <Route path="/collections" component={ CollectionsContainer } />
+        <UsersContainer />
+
 
 
       </div>
