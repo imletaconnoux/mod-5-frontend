@@ -188,3 +188,33 @@ export function removeVideoFromCollection(collection, video){
     })
   }
 }
+
+function updatedVideoComment(video, collection){
+  return{
+    type: "UPDATED_VIDEO_COMMENT",
+    videoPayload: video,
+    collectionPayload: collection
+  }
+
+}
+
+export function updateVideoComment(id, comment, collection_id){
+  const body = JSON.stringify({id: id, comment: comment})
+
+  return function(dispatch){
+
+    fetch(`http://localhost:3000/api/v1/videos/${id}`, {
+      method: 'PATCH',
+      body: body,
+      headers: {
+       "Accept": "application/json",
+       "Content-Type":"application/json"
+     }
+    })
+    .then((res) => res.json())
+    .then((json) => {
+  
+      dispatch(updatedVideoComment(json, collection_id))
+    })
+  }
+}

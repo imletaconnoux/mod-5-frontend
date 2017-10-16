@@ -10,11 +10,11 @@ import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { fetchVideos } from './actions/youtube'
 import { fetchCollections } from './actions/collections'
-import videosReducer from './reducers/videosReducer'
+import youtubeReducer from './reducers/youtubeReducer'
 import usersReducer from './reducers/usersReducer'
 import collectionsReducer from './reducers/collectionsReducer'
 
-const rootReducer = combineReducers({videos: videosReducer, users: usersReducer, collections: collectionsReducer})
+const rootReducer = combineReducers({videos: youtubeReducer, users: usersReducer, collections: collectionsReducer})
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))
 
 ReactDOM.render(<Provider store={store}><Router><App /></Router></Provider>, document.getElementById('root'));

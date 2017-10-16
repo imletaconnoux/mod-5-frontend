@@ -1,25 +1,61 @@
 import React from 'react'
 
 import CollectionVideos from './CollectionVideos'
-
+import { connect } from 'react-redux'
+import { fetchCollections } from '../../actions/collections'
 class CollectionDetail extends React.Component{
+
+  constructor(){
+    super()
+    this.state = {
+      collection: null
+    }
+  }
+
+  componentDidMount(){
+    this.props.fetchCollections()
+
+  }
 
 
 
   render(){
-  
+    if (this.props.collections.length > 0 ){
+      console.log(this.props)
 
-    const { collection }  = this.props.collection
-    return (
-      <div>
-        <h1> Your {this.props.collection.name} video collection </h1>
-        <CollectionVideos videos={this.props.collection.videos} collection={this.props.collection}/>
+      const collection = this.props.collections.filter((collection) => {
+        return collection.id === parseInt(this.props.match.params.id)
+      })
+      return (
+        <div>
+          <h1> Your {collection[0].name} video collection </h1>
+          <CollectionVideos videos={collection[0].videos} collection={collection[0]}/>
 
 
-      </div>
+        </div>
+        )
+    } else {
+      return(
+      null
     )
+    }
   }
 
 }
 
-export default CollectionDetail
+function mapStateToProps(state){
+  console.log(state)
+  return {
+    collections: state.collections.list
+  }
+}
+
+function mapDispatchToProps(dispatch){
+  return {
+    fetchCollections: () => {
+      dispatch(fetchCollections())
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CollectionDetail)

@@ -1,4 +1,4 @@
-function videosReducer(state = { isSearching: false, searchResults: [], recommendations: [], recommendationsKeys: []}, action){
+function youtubeReducer(state = { isSearching: false, searchResults: [], recommendations: [], recommendationsKeys: []}, action){
   switch (action.type) {
     case "SEARCHING_VIDEOS":
       return Object.assign({}, state, {isSearching: true})
@@ -9,4 +9,4 @@ function videosReducer(state = { isSearching: false, searchResults: [], recommen
   }
 }
 
-export default videosReducer
+export default youtubeReducer
