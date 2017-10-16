@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Modal, Icon, Form, TextArea, Button, Header } from 'semantic-ui-react'
+import { Modal, Form, TextArea, Button, Header, Segment } from 'semantic-ui-react'
 import { updateVideoComment } from '../../actions/collections'
 
 class VideoOverlay extends React.Component{
@@ -37,10 +37,10 @@ class VideoOverlay extends React.Component{
     const link = `https://www.youtube.com/embed/${this.props.video.youtube_id}`
     console.log(this.props)
     return(
-      <div>
-        <Header>
+      <Segment>
+        <Segment as='h3'>
           {this.props.video.title}
-        </Header>
+        </Segment>
         <Modal.Content wrapped aligned="center">
         <iframe wrapped width="560" height="315" aligned="center" src={link} frameBorder="0" allowFullScreen></iframe>
           <Modal.Description>
@@ -51,7 +51,7 @@ class VideoOverlay extends React.Component{
               </Form>
           </Modal.Description>
         </Modal.Content>
-      </div>
+      </Segment>
 
 
     )
