@@ -18,9 +18,13 @@ export function loginUser(loginParams){
       })
     .then((res) => res.json())
     .then((json) => {
-      console.log("console dot logging json from login user", json)
+
+      if (json.user) {
       localStorage.setItem("jwtToken", json.jwt)
       dispatch(loggedinUser(json.user))
+      } else {
+      window.alert(json.message)
+    }
     })
   }
 }
@@ -35,5 +39,24 @@ export function logoutUser(){
   return function(dispatch){
     localStorage.removeItem("jwtToken")
     dispatch(loggedoutUser())
+  }
+}
+
+export function signupUser(loginParams){
+  const body = JSON.stringify(loginParams)
+  return function(dispatch){
+  fetch("http://localhost:3000/api/v1/users", {
+    method: 'post',
+    body: body,
+    headers: {
+      "Accept": "application/json",
+      "Content-Type":"application/json"
+    }
+  })
+    .then((res) => res.json())
+    .then((json) => {
+      localStorage.setItem("jwtToken", json.jwt)
+      dispatch(loggedinUser(json.user))
+    })
   }
 }

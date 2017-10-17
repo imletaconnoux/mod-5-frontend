@@ -8,6 +8,8 @@ function Authorize(RenderedComponent, props){
     render(){
       if (localStorage.getItem('jwtToken') && this.props.location.pathname === "/login") {
         return <Redirect to="/" />
+      } else if (localStorage.getItem('jwtToken') && this.props.location.pathname === "/signup") {
+        return <Redirect to="/" />
       } else if (!localStorage.getItem('jwtToken') && this.props.location.pathname === "/collections") {
           return <Redirect to="/login" />
       }  else {

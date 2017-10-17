@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
+import { Button, Form, Grid, Header, Icon, Message, Segment } from 'semantic-ui-react'
 import { Link, Redirect } from 'react-router-dom'
 import { loginUser } from '../../actions/users'
 import { connect } from 'react-redux'
@@ -21,6 +21,7 @@ class LoginForm extends React.Component{
   }
 
   handlePasswordInput = (event) => {
+
     this.setState({
       passwordInput: event.target.value
     })
@@ -28,6 +29,7 @@ class LoginForm extends React.Component{
 
   handleSubmit = (event) => {
     event.preventDefault()
+    console.log(this.state)
     this.props.loginUser({email: this.state.emailInput, password: this.state.passwordInput })
     this.setState({
       emailInput: "",
@@ -52,8 +54,8 @@ class LoginForm extends React.Component{
     >
       <Grid.Column style={{ maxWidth: 450 }}>
         <Header as='h2' color='orange' textAlign='center'>
-          <Image src='/logo.png' />
-          {' '}Log-in to your account
+          <Icon name='video play outline' color='orange' />
+          Log-in to your account
         </Header>
         <Form size='large' onSubmit={this.handleSubmit}>
           <Segment stacked>
@@ -63,6 +65,7 @@ class LoginForm extends React.Component{
               iconPosition='left'
               placeholder='E-mail address'
               onChange={this.handleEmailInput}
+              value={this.state.emailInput}
             />
             <Form.Input
               fluid
@@ -71,13 +74,14 @@ class LoginForm extends React.Component{
               placeholder='Password'
               type='password'
               onChange={this.handlePasswordInput}
+              value={this.state.passwordInput}
             />
 
             <Button color='orange' fluid size='large'>Login</Button>
           </Segment>
         </Form>
         <Message>
-          New to us? <a href='#'>Sign Up</a>
+          New to us? <Link to='/signup'>Sign Up</Link>
         </Message>
       </Grid.Column>
     </Grid>
