@@ -43,12 +43,14 @@ function deletedCollection(collection){
   }
 }
 export function deleteCollection(collection){
+  const jwt = localStorage.getItem("jwtToken")
   const body = JSON.stringify({id: collection.id})
   return function(dispatch){
     fetch(`http://localhost:3000/api/v1/collections/${collection.id}`, {
       method: 'DELETE',
       body: body,
       headers: {
+        "Authorization": "Bearer " + jwt,
        "Accept": "application/json",
        "Content-Type":"application/json"
      }
@@ -83,7 +85,7 @@ export function createCollectionWithVideo(name, video){
 }
 
 export function addVideo(video, collection){
-
+  const jwt = localStorage.getItem("jwtToken")
   const body = JSON.stringify({title: video.snippet.title, youtube_id: video.id.videoId, thumbnail: video.snippet.thumbnails.high.url})
   return function(dispatch){
     console.log(body)
@@ -92,6 +94,7 @@ export function addVideo(video, collection){
       method: 'post',
       body: body,
       headers: {
+        "Authorization": "Bearer " + jwt,
        "Accept": "application/json",
        "Content-Type":"application/json"
      }
@@ -104,12 +107,14 @@ export function addVideo(video, collection){
 }
 
 function addToCollection(video, collection){
+  const jwt = localStorage.getItem("jwtToken")
   const body = JSON.stringify({video_id: video.id, collection_id: collection.id})
   return function(dispatch){
     fetch(`http://localhost:3000/api/v1/video_collections`, {
       method: 'post',
       body: body,
       headers: {
+        "Authorization": "Bearer " + jwt,
        "Accept": "application/json",
        "Content-Type":"application/json"
      }
@@ -153,12 +158,14 @@ function updatedCollectionName(collection){
   }
 }
 export function updateCollectionName(id, name){
+  const jwt = localStorage.getItem("jwtToken")
   const body = JSON.stringify({id: id, name: name})
   return function(dispatch){
     fetch(`http://localhost:3000/api/v1/collections/${id}`, {
       method: 'PATCH',
       body: body,
       headers: {
+      "Authorization": "Bearer " + jwt,
        "Accept": "application/json",
        "Content-Type":"application/json"
      }
@@ -179,13 +186,14 @@ function removedVideoFromCollection(videoCollection){
 }
 
 export function removeVideoFromCollection(collection, video){
-
+  const jwt = localStorage.getItem("jwtToken")
   const body = JSON.stringify({collection_id: collection.id, video_id: video.id})
   return function(dispatch){
     fetch(`http://localhost:3000/api/v1/video_collections/`, {
       method: 'DELETE',
       body: body,
       headers: {
+       "Authorization": "Bearer " + jwt,
        "Accept": "application/json",
        "Content-Type":"application/json"
      }
@@ -208,13 +216,14 @@ function updatedVideoComment(video, collection){
 
 export function updateVideoComment(id, comment, collection_id){
   const body = JSON.stringify({id: id, comment: comment})
-
+  const jwt = localStorage.getItem("jwtToken")
   return function(dispatch){
 
     fetch(`http://localhost:3000/api/v1/videos/${id}`, {
       method: 'PATCH',
       body: body,
       headers: {
+      "Authorization": "Bearer " + jwt,
        "Accept": "application/json",
        "Content-Type":"application/json"
      }

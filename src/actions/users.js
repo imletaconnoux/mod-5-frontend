@@ -33,7 +33,6 @@ function loggedoutUser(){
 
 export function logoutUser(){
   return function(dispatch){
-    debugger
     localStorage.removeItem("jwtToken")
     dispatch(loggedoutUser())
   }

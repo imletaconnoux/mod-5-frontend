@@ -6,20 +6,29 @@ import PopUpForm from './PopUpForm'
 
 const PopUp = (props) => {
 
-    const PopUpList = props.collections.map((collection, index) => {
-      return <PopUpItem key={index} collection={collection} video={props.video}/>
-    })
 
 
-    return(
-      <div>
-        {PopUpList}
-        <PopUpForm video={props.video}/>
+    if (localStorage.getItem('jwtToken')) {
 
-      </div>
+      const PopUpList = props.collections.map((collection, index) => {
+        return <PopUpItem key={index} collection={collection} video={props.video}/>
+      })
+      
+      return(
+        <div>
+          {PopUpList}
+          <PopUpForm video={props.video}/>
+        </div>
+      )
+    } else {
+      return(
+      <p>You must be logged in to save videos</p>
+      )
+    }
 
-    )
-  }
+
+
+}
 
 
 

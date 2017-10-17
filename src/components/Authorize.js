@@ -2,20 +2,22 @@ import React from 'react'
 import { Redirect } from 'react-router-dom'
 
 function Authorize(RenderedComponent, props){
+
   return class extends React.Component{
 
     render(){
       if (localStorage.getItem('jwtToken') && this.props.location.pathname === "/login") {
-        debugger
         return <Redirect to="/" />
-      } else {
+      } else if (!localStorage.getItem('jwtToken') && this.props.location.pathname === "/collections") {
+          return <Redirect to="/login" />
+      }  else {
         return (
           <RenderedComponent {...this.props} {...props}/>
-        )
-      }
-
+          )
       }
     }
+
+  }
 
 }
 

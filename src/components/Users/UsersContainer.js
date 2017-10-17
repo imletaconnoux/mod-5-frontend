@@ -1,7 +1,8 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
 import LoginForm from './LoginForm'
-import Authorize from '../../Authorize'
+import Authorize from '../Authorize'
+import { connect } from 'react-redux'
 
 class UsersContainer extends React.Component{
 
@@ -16,4 +17,9 @@ class UsersContainer extends React.Component{
 
 }
 
-export default UsersContainer
+function mapStateToProps(state){
+  return {
+      currentUser: state.user.currentUser
+    }
+}
+export default connect(mapStateToProps)(UsersContainer)

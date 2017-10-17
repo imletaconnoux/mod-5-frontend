@@ -11,35 +11,29 @@ import { connect } from 'react-redux'
 import thunk from 'redux-thunk'
 import CollectionsContainer from './components/Collections/CollectionsContainer.js'
 import UsersContainer from './components/Users/UsersContainer.js'
+import Authorize from './components/Authorize'
 
 class App extends Component {
 
-  componentDidMount(){
-    console.log("Mounting")
-    //this.props.fetchCollections()
-  }
+
   render() {
 
-
-    console.log("Rendering",this.props)
+    const AuthCollectionsContainer = Authorize(CollectionsContainer)
+    const AuthUsersContainer = Authorize(UsersContainer)
 
     return (
 
       <div className="App">
 
-
-
-
-
-        <Route path="/" component={Nav}/>
-        <Route path="/" component={ YoutubeContainer } />
-        <Route path="/collections" component={ CollectionsContainer } />
-        <UsersContainer />
+          <Route path="/" component={Nav}/>
+          <Route path="/" component={ YoutubeContainer } />
+          <Route path="/collections" render={(props) => <AuthCollectionsContainer {...props} /> }/>
+          <Route path="/" render={(props) => <AuthUsersContainer {...props} /> }/>
 
 
 
       </div>
-    );
+    )
   }
 }
 
