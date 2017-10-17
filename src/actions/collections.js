@@ -16,12 +16,14 @@ function createVideo(video) {
 }
 
 export function createCollection(name){
-  const body = JSON.stringify({user_id: 1, name: name})
+  const jwt = localStorage.getItem("jwtToken")
+  const body = JSON.stringify({name: name})
   return function(dispatch){
     fetch(`http://localhost:3000/api/v1/collections`, {
       method: 'post',
       body: body,
       headers: {
+       "Authorization": "Bearer " + jwt,
        "Accept": "application/json",
        "Content-Type":"application/json"
      }
@@ -59,12 +61,14 @@ export function deleteCollection(collection){
 }
 
 export function createCollectionWithVideo(name, video){
-  const body = JSON.stringify({user_id: 1, name: name})
+  const jwt = localStorage.getItem("jwtToken")
+  const body = JSON.stringify({name: name})
   return function(dispatch){
     fetch(`http://localhost:3000/api/v1/collections`, {
       method: 'post',
       body: body,
       headers: {
+      "Authorization": "Bearer " + jwt,
        "Accept": "application/json",
        "Content-Type":"application/json"
      }
@@ -127,10 +131,14 @@ function fetchedCollections(collections){
 
 
 export function fetchCollections(){
-
+  const jwt = localStorage.getItem("jwtToken")
   return function(dispatch){
-
-    fetch(`http://localhost:3000/api/v1/collections`)
+    fetch(`http://localhost:3000/api/v1/collections`, {
+      method: 'get',
+      headers : {
+        "Authorization": "Bearer " + jwt
+      }
+    })
     .then((res) => res.json())
     .then((json) => {
       dispatch(fetchedCollections(json))
@@ -213,7 +221,7 @@ export function updateVideoComment(id, comment, collection_id){
     })
     .then((res) => res.json())
     .then((json) => {
-  
+
       dispatch(updatedVideoComment(json, collection_id))
     })
   }

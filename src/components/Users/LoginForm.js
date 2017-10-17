@@ -1,6 +1,8 @@
 import React from 'react'
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
+import { loginUser } from '../../actions/users'
+import { connect } from 'react-redux'
 
 class LoginForm extends React.Component{
 
@@ -26,11 +28,14 @@ class LoginForm extends React.Component{
 
   handleSubmit = (event) => {
     event.preventDefault()
-    console.log(this.state)
+    this.props.loginUser({email: this.state.emailInput, password: this.state.passwordInput })
+    this.setState({
+      emailInput: "",
+      passwordInput: ""
+    })
   }
 
   render(){
-    console.log("rendering loginform")
     return(
       <div className='login-form'>
         <style>{`
@@ -81,4 +86,12 @@ class LoginForm extends React.Component{
   }
 }
 
-export default LoginForm
+function mapDispatchToProps(dispatch){
+  return{
+    loginUser: (loginParams) => {
+      dispatch(loginUser(loginParams))
+    }
+  }
+}
+
+export default connect(null, mapDispatchToProps)(LoginForm)
