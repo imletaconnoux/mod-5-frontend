@@ -15,7 +15,7 @@ class CollectionItem extends React.Component{
   render(){
 
 
-    
+
 
 
     return(
@@ -26,7 +26,7 @@ class CollectionItem extends React.Component{
               src={this.props.collection.image}
               size='medium'
               bordered
-              label={{ as: 'a', color: 'orange', content: `${this.props.collection.name}`, ribbon: true }}
+              label={{ as: 'a', color: 'red', content: `${this.props.collection.name}`, ribbon: true }}
             />
 
 

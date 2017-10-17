@@ -37,7 +37,7 @@ class CollectionForm extends React.Component{
     return(
       <div>
       <Header as='h2' icon>
-        <Icon name='video play outline' color='orange' />
+        <Icon name='video play outline' color='red' />
         My Collections
         <Header.Subheader>
           XYZ

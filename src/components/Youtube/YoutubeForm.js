@@ -34,7 +34,7 @@ class YoutubeForm extends React.Component{
     return(
       <div>
         <Header as='h2' icon>
-          <Icon name='video play outline' color='orange' />
+          <Icon name='video play outline' color='red' />
           The YouTubist
           <Header.Subheader>
             Search for videos below. Save the ones your like to your collections.

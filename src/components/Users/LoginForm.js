@@ -53,8 +53,8 @@ class LoginForm extends React.Component{
       verticalAlign='middle'
     >
       <Grid.Column style={{ maxWidth: 450 }}>
-        <Header as='h2' color='orange' textAlign='center'>
-          <Icon name='video play outline' color='orange' />
+        <Header as='h2' color='red' textAlign='center'>
+          <Icon name='video play outline' color='red' />
           Log-in to your account
         </Header>
         <Form size='large' onSubmit={this.handleSubmit}>
@@ -77,7 +77,7 @@ class LoginForm extends React.Component{
               value={this.state.passwordInput}
             />
 
-            <Button color='orange' fluid size='large'>Login</Button>
+            <Button color='red' fluid size='large'>Login</Button>
           </Segment>
         </Form>
         <Message>

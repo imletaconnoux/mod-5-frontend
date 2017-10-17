@@ -3,13 +3,20 @@ import PopUp from './PopUp'
 import { Card, Button, Icon, Divider, Segment, Popup, Form} from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { createCollectionWithVideo } from '../../actions/collections'
+import { fetchCollections } from '../../actions/collections'
+
 class YoutubeItem extends React.Component{
+
+  componentDidMount() {
+
+    this.props.fetchCollections()
+  }
 
 
 
 
   render(){
-    console.log(this.props)
+    console.log("rendering youtubeitem", this.props)
 
     const link = `https://www.youtube.com/embed/${this.props.video.id.videoId}`
 
@@ -26,7 +33,7 @@ class YoutubeItem extends React.Component{
         <Segment raised>
         {this.props.video.snippet.title}
           <Popup
-            trigger={<Icon name="bookmark" />}
+            trigger={<Icon name="plus square outline" size="big" color="red"/>}
             size='huge'
             hoverable
           >
@@ -55,7 +62,14 @@ function mapStateToProps(state){
   }
 }
 
+function mapDispatchToProps(dispatch){
+  return {
+    fetchCollections: () => {
+      dispatch(fetchCollections())
+    }
+  }
+}
 
 
 
-export default connect(mapStateToProps)(YoutubeItem)
+export default connect(mapStateToProps, mapDispatchToProps)(YoutubeItem)

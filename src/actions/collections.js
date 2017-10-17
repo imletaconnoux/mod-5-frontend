@@ -106,6 +106,17 @@ export function addVideo(video, collection){
   }
 }
 
+function addedToCollection(video, collection){
+  console.log("video", video)
+  console.log("collection", collection)
+  debugger
+  return {
+    type: "ADDED_TO_COLLECTION",
+    videoPayload: video,
+    collectionPayload: collection
+  }
+}
+
 function addToCollection(video, collection){
   const jwt = localStorage.getItem("jwtToken")
   const body = JSON.stringify({video_id: video.id, collection_id: collection.id})
@@ -121,7 +132,8 @@ function addToCollection(video, collection){
     })
     .then((res) => res.json())
     .then((json) => {
-      console.log(json)
+      
+      dispatch(addedToCollection(video, collection))
     })
   }
 }
@@ -188,6 +200,7 @@ function removedVideoFromCollection(videoCollection){
 export function removeVideoFromCollection(collection, video){
   const jwt = localStorage.getItem("jwtToken")
   const body = JSON.stringify({collection_id: collection.id, video_id: video.id})
+
   return function(dispatch){
     fetch(`http://localhost:3000/api/v1/video_collections/`, {
       method: 'DELETE',

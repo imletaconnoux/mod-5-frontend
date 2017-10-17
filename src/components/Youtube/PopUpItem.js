@@ -1,7 +1,7 @@
 import React from 'react'
-import { Form, Radio } from 'semantic-ui-react'
+import { Form, Checkbox } from 'semantic-ui-react'
 import { connect } from 'react-redux'
-import { addVideo } from '../../actions/collections'
+import { addVideo, removeVideoFromCollection } from '../../actions/collections'
 
 
 class PopUpItem extends React.Component {
@@ -10,40 +10,75 @@ class PopUpItem extends React.Component {
   constructor(){
     super()
     this.state= {
-      collection: null
+      collection: false,
+      databaseVideo: null
     }
   }
+
+  componentDidMount(){
+    console.log("TEST", this.props.collection.videos)
+    
+    const video = this.props.collection.videos.filter((video) => {
+        return (video.title === this.props.video.snippet.title)
+    })
+
+    if (video.length > 0 ) {
+      this.setState({
+        collection: true,
+        databaseVideo: video[0]
+      })
+    }
+  }
+
+
+
 
   handleChange = (event) => {
     event.preventDefault()
     this.setState({
-      collection: this.props.collection
+      collection: !this.state.collection
     })
-    this.props.addVideo(this.props.video, this.props.collection)
+    if (this.state.collection === false ) {
+      this.props.addVideo(this.props.video, this.props.collection)
+    } else {
+
+      this.props.removeVideo(this.props.collection, this.state.databaseVideo)
+
+    }
 
   }
 
   render(){
-    console.log(this.props)
-    return(
-      <Form.Field>
-          <Radio
 
-            label={this.props.collection.name}
-            name='checkboxRadioGroup'
-            value={this.props.collection}
-            onChange={this.handleChange}
-          />
-      </Form.Field>
-    )
+    console.log("CURRENT STATE", this.state)
+    console.log(this.props.collection)
+
+
+
+      return(
+
+        <Form.Field>
+            <Checkbox
+              label={this.props.collection.name}
+              checked={this.state.collection}
+              value={this.props.collection}
+              onClick={this.handleChange}
+            />
+        </Form.Field>
+      )
+
   }
 
 }
+
 
 function mapDispatchToProps(dispatch){
   return {
     addVideo: (video, collection) => {
     dispatch(addVideo(video, collection))
+    },
+    removeVideo: (collection, video) => {
+      dispatch(removeVideoFromCollection(collection,video))
     }
   }
 }

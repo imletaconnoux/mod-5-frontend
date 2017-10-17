@@ -29,6 +29,16 @@ function collectionsReducer(state = { list: [] }, action){
         })
       })
 
+    case "ADDED_TO_COLLECTION":
+        return Object.assign({}, state, {
+          list: state.list.map((collection) => {
+            if (collection.id === action.collectionPayload.id){
+              return Object.assign({}, collection, {videos: [...collection.videos, action.videoPayload: {} ]})
+            }
+            return collection
+          })
+        })
+
     case "UPDATED_VIDEO_COMMENT":
       return Object.assign({}, state, {
         list: state.list.map((collection) => {
@@ -44,7 +54,8 @@ function collectionsReducer(state = { list: [] }, action){
         return collection
         })
       })
-
+    case "LOGGEDOUT_USER":
+      return Object.assign({}, state, {list: []})
     default:
       return state
   }

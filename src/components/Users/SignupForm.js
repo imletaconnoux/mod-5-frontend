@@ -58,8 +58,8 @@ class SignUpForm extends React.Component{
     verticalAlign='middle'
   >
     <Grid.Column style={{ maxWidth: 450 }}>
-      <Header as='h2' color='orange' textAlign='center'>
-          <Icon name='video play outline' color='orange' />
+      <Header as='h2' color='red' textAlign='center'>
+          <Icon name='video play outline' color='red' />
         Create an account
       </Header>
       <Form size='large' onSubmit={this.handleSubmit}>
@@ -87,7 +87,7 @@ class SignUpForm extends React.Component{
             onChange={this.handlePasswordInput}
           />
 
-          <Button color='orange' fluid size='large'><Icon name='signup'/>Create account</Button>
+          <Button color='red' fluid size='large'><Icon name='signup'/>Create account</Button>
         </Segment>
       </Form>
     </Grid.Column>
