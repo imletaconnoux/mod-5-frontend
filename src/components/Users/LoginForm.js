@@ -29,7 +29,6 @@ class LoginForm extends React.Component{
 
   handleSubmit = (event) => {
     event.preventDefault()
-    console.log(this.state)
     this.props.loginUser({email: this.state.emailInput, password: this.state.passwordInput })
     this.setState({
       emailInput: "",

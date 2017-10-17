@@ -8,7 +8,7 @@ import EditPopUpForm from './EditPopUpForm'
 class CollectionItem extends React.Component{
 
   handleDelete = () => {
-    console.log("delete")
+
     this.props.deleteCollection(this.props.collection)
   }
 
@@ -19,25 +19,27 @@ class CollectionItem extends React.Component{
 
 
     return(
-      <Grid.Column width={5}>
-        <Segment >
+      <Grid.Column width={5} centered>
+        <Segment textAlign='center'>
           <Link to={"/collections/" + this.props.collection.id}>
             <Image
               src={this.props.collection.image}
               size='medium'
               bordered
+              centered
               label={{ as: 'a', color: 'red', content: `${this.props.collection.name}`, ribbon: true }}
             />
 
 
           </Link>
           <Segment.Group horizontal>
-              <Segment>
+
+              <Segment textAlign='center'>
                 <Link to={"/collections/" + this.props.collection.id}>
                   <p>View <Icon name="object group"/> </p>
                 </Link>
               </Segment>
-              <Segment>
+              <Segment textAlign='center'>
                 <p>Edit
                   <Popup
                   trigger={<Icon name="edit" />}
@@ -47,8 +49,8 @@ class CollectionItem extends React.Component{
                   <EditPopUpForm  collection={this.props.collection}/>
                 </Popup>
                  </p>
-              </Segment>
-              <Segment onClick={this.handleDelete}>
+              </Segment >
+              <Segment onClick={this.handleDelete} textAlign='center'>
                 <p>Remove <Icon name="delete"/> </p>
               </Segment>
           </Segment.Group>

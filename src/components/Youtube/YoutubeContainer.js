@@ -12,14 +12,10 @@ class YoutubeContainer extends React.Component {
 
 
   render(){
-    console.log("rendering youtubecontainer", this.props)
     return (
       <div>
         <Route exact path="/" component={YoutubeForm}/>
         <Route exact path="/" render={(props) => <YoutubeSearchList videos={this.props.searchResults} {...props}/> } />
-
-
-
       </div>
     )
   }

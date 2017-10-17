@@ -77,7 +77,6 @@ export function createCollectionWithVideo(name, video){
     })
     .then((res) => res.json())
     .then((json) => {
-      console.log(json)
       dispatch(createdCollection(json))
       dispatch(addVideo(video, json))
     })
@@ -88,8 +87,6 @@ export function addVideo(video, collection){
   const jwt = localStorage.getItem("jwtToken")
   const body = JSON.stringify({title: video.snippet.title, youtube_id: video.id.videoId, thumbnail: video.snippet.thumbnails.high.url})
   return function(dispatch){
-    console.log(body)
-
     fetch(`http://localhost:3000/api/v1/videos`, {
       method: 'post',
       body: body,
@@ -107,8 +104,6 @@ export function addVideo(video, collection){
 }
 
 function addedToCollection(video, collection){
-  console.log("video", video)
-  console.log("collection", collection)
   debugger
   return {
     type: "ADDED_TO_COLLECTION",
@@ -132,7 +127,7 @@ function addToCollection(video, collection){
     })
     .then((res) => res.json())
     .then((json) => {
-      
+
       dispatch(addedToCollection(video, collection))
     })
   }

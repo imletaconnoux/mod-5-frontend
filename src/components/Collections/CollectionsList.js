@@ -4,8 +4,6 @@ import { Grid } from 'semantic-ui-react'
 
 const CollectionsList = (props) => {
 
-  console.log(props)
-
 
   const collections = props.collections.map((collection, index) => {
         return ( <CollectionItem key={index} collection={collection} />)
@@ -14,7 +12,7 @@ const CollectionsList = (props) => {
 
   return (
 
-    <Grid>
+    <Grid centered>
 
       {collections}
 

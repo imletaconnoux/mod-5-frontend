@@ -8,28 +8,17 @@ import { fetchCollections } from '../../actions/collections'
 class YoutubeItem extends React.Component{
 
   componentDidMount() {
-
     this.props.fetchCollections()
   }
 
 
-
-
   render(){
-    console.log("rendering youtubeitem", this.props)
-
     const link = `https://www.youtube.com/embed/${this.props.video.id.videoId}`
-
-
-
     return (
       <div>
-
         <iframe aligned="center" width="560" height="315" src={link}
         frameBorder="0"
         allowFullScreen></iframe>
-
-
         <Segment raised>
         {this.props.video.snippet.title}
           <Popup
@@ -43,13 +32,9 @@ class YoutubeItem extends React.Component{
               </Form.Field>
               <PopUp collections={this.props.collections} video={this.props.video} />
 
-
-
             </Form>
           </Popup>
         </Segment>
-
-
         <Divider clearing />
       </div>
     )

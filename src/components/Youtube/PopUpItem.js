@@ -16,8 +16,7 @@ class PopUpItem extends React.Component {
   }
 
   componentDidMount(){
-    console.log("TEST", this.props.collection.videos)
-    
+
     const video = this.props.collection.videos.filter((video) => {
         return (video.title === this.props.video.snippet.title)
     })
@@ -49,14 +48,7 @@ class PopUpItem extends React.Component {
   }
 
   render(){
-
-    console.log("CURRENT STATE", this.state)
-    console.log(this.props.collection)
-
-
-
-      return(
-
+    return(
         <Form.Field>
             <Checkbox
               label={this.props.collection.name}
@@ -66,7 +58,6 @@ class PopUpItem extends React.Component {
             />
         </Form.Field>
       )
-
   }
 
 }

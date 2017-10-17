@@ -28,14 +28,11 @@ class VideoOverlay extends React.Component{
 
   handleSubmit = (event) => {
     event.preventDefault()
-    console.log(this.props)
-    console.log(this.props.collection)
     this.props.updateVideoComment(this.props.video.id, this.state.videoComment, this.props.collection.id)
   }
 
   render(){
     const link = `https://www.youtube.com/embed/${this.props.video.youtube_id}`
-    console.log(this.props)
     return(
       <Segment>
         <Segment as='h3'>

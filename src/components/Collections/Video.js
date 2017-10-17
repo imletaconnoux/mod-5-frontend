@@ -13,7 +13,6 @@ class Video extends React.Component {
 
   render(){
 
-    console.log(this.props)
     const link = `https://www.youtube.com/embed/${this.props.video.youtube_id}`
 
 

@@ -14,7 +14,7 @@ class CollectionForm extends React.Component{
 
   handleSubmit = (event) => {
     event.preventDefault()
-    console.log(this.state)
+    
 
     if (this.state.collectionInput !== "") {
       this.props.createCollection(this.state.collectionInput)

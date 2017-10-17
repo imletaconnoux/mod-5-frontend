@@ -7,7 +7,6 @@ const YoutubeSearchList = (props) => {
     return <YoutubeItem key={index} video={video}/>
   })
 
-  console.log(props.videos[0])
   return (
     <div>
       {youtubeItems}

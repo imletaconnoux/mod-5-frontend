@@ -23,7 +23,6 @@ class PopUpFrom extends React.Component{
   }
 
   handleInput = (event) => {
-    console.log(event.target.value)
     this.setState({
       collectionInput: event.target.value
     })
