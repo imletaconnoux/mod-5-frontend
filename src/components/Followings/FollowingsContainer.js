@@ -17,7 +17,7 @@ class FollowingsContainer extends React.Component{
     console.log(this.props)
     return(
       <div>
-        <Route exact path="/following" render={(props) => <FollowingsList following={this.props.following} {...props} />}/>
+        <Route exact path="/following" render={(props) => <FollowingsList collections={this.props.following} {...props} />}/>
         <Route path="/following/:id" render={(routeProps) => {
           const id = routeProps.match.params.id
           const collection = this.props.following.filter((collection) => {

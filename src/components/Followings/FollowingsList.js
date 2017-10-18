@@ -6,8 +6,8 @@ const FollowingsList = (props) => {
 
   console.log(props)
 
-  const followings = props.following.map((following, index) => {
-        return ( <FollowingItem key={index} following={following} />)
+  const followings = props.collections.map((collection, index) => {
+        return ( <FollowingItem key={index} collection={collection} />)
   })
 
 

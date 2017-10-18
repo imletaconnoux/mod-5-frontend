@@ -12,9 +12,6 @@ function searchedVideos(videos){
 }
 
 export function searchVideos(term, sort){
-  console.log(term)
-  console.log(sort)
-  debugger
   return function(dispatch) {
 
     dispatch(searchingVideos())
@@ -22,6 +19,34 @@ export function searchVideos(term, sort){
     .then((res) => res.json())
     .then((json) => {
       dispatch(searchedVideos(json.items))
+    })
+  }
+}
+
+function searchedCollections(collections){
+  console.log(collections)
+  debugger
+  return {
+    type: "SEARCHED_COLLECTIONS",
+    payload: collections
+  }
+}
+
+export function searchCollections(term){
+  const jwt = localStorage.getItem("jwtToken")
+
+  return function(dispatch){
+    fetch(`http://localhost:3000/api/v1/collections`, {
+      method: 'get',
+      headers : {
+        "Authorization": "Bearer " + jwt
+      }
+    })
+    .then((res) => res.json())
+    .then((json) => {
+      console.log(json)
+      const collections = json.filter((collection) => collection.name.includes(term))
+      dispatch(searchedCollections(collections))
     })
   }
 }

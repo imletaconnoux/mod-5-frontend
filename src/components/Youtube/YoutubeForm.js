@@ -1,5 +1,5 @@
 import React from 'react'
-import { searchVideos } from '../../actions/youtube'
+import { searchVideos, searchCollections } from '../../actions/youtube'
 import { connect } from 'react-redux'
 import { Header, Icon, Checkbox, Divider } from 'semantic-ui-react'
 
@@ -31,6 +31,7 @@ class YoutubeForm extends React.Component{
     event.preventDefault()
     if (this.state.searchInput !== "") {
       this.props.searchVideos(this.state.searchInput, this.state.sortInput)
+      this.props.searchCollections(this.state.searchInput)
     }
     this.setState({
       searchInput: "",
@@ -46,7 +47,7 @@ class YoutubeForm extends React.Component{
           <Icon name='video play outline' color='red' />
           The YouTubist
           <Header.Subheader>
-            Search for videos below. Save the ones your like to your collections.
+            Search for videos or existing user collections below. Save the ones your like to your collections.
           </Header.Subheader>
         </Header>
 
@@ -92,6 +93,9 @@ function mapDispatchToProps(dispatch){
   return {
     searchVideos: (term, sort) => {
       dispatch(searchVideos(term, sort))
+    },
+    searchCollections: (term) => {
+      dispatch(searchCollections(term))
     }
   }
 }

@@ -7,21 +7,21 @@ import { unfollow } from '../../actions/followings'
 class FollowingItem extends React.Component{
 
   handleUnfollow = (event) => {
-    console.log("CLICK", this.props.following)
-    this.props.unfollow(this.props.following)
+    console.log("CLICK", this.props.collection)
+    this.props.unfollow(this.props.collection)
   }
 
   render(){
     return(
       <Grid.Column width={5} centered>
         <Segment textAlign='center'>
-          <Link to={"/following/" + this.props.following.id}>
+          <Link to={"/following/" + this.props.collection.id}>
             <Image
-              src={this.props.following.image}
+              src={this.props.collection.image}
               size='medium'
               bordered
               centered
-              label={{ as: 'a', color: 'red', content: `${this.props.following.name} by ${this.props.following.user.name}`, ribbon: true }}
+              label={{ as: 'a', color: 'red', content: `${this.props.collection.name} by ${this.props.collection.user.name}`, ribbon: true }}
             />
 
 
@@ -29,7 +29,7 @@ class FollowingItem extends React.Component{
           <Segment.Group horizontal>
 
               <Segment textAlign='center'>
-                <Link to={"/following/" + this.props.following.id}>
+                <Link to={"/following/" + this.props.collection.id}>
                   <p>View <Icon name="object group"/> </p>
                 </Link>
               </Segment>

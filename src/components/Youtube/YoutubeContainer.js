@@ -1,10 +1,10 @@
 import React from 'react'
 import YoutubeForm from './YoutubeForm'
-import { Grid, List, Loader} from 'semantic-ui-react'
+import { Grid, List, Loader, Header, Icon, Divider} from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import YoutubeSearchList from './YoutubeSearchList'
 import { Route } from 'react-router-dom'
-
+import CollectionsSearchList from './CollectionsSearchList'
 
 class YoutubeContainer extends React.Component {
 
@@ -12,10 +12,13 @@ class YoutubeContainer extends React.Component {
 
 
   render(){
+    console.log("YOUTUBE CONTAINER STATE", this.props)
     return (
       <div>
         <Route exact path="/" component={YoutubeForm}/>
-        <Route exact path="/" render={(props) => <YoutubeSearchList videos={this.props.searchResults} {...props}/> } />
+        <Route exact path="/" render={(props) => <CollectionsSearchList collections={this.props.collectionsResults} {...props}/> } />
+        <Divider hidden />
+        <Route exact path="/" render={(props) => <YoutubeSearchList videos={this.props.youtubeResults} {...props}/> } />
       </div>
     )
   }
@@ -23,8 +26,10 @@ class YoutubeContainer extends React.Component {
 
 function mapStateToProps(state){
   return {
-    searchResults: state.videos.searchResults,
-    isSearching: state.videos.isSearching
+    youtubeResults: state.youtube.youtubeResults,
+    collectionsResults: state.youtube.collectionsResults,
+    isSearching: state.youtube.isSearching,
+
   }
 }
 

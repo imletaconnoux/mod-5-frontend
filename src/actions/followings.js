@@ -45,27 +45,3 @@ export function unfollow(collection){
     })
   }
 }
-
-function fetchedAllCollections(collections){
-  return {
-    type: "FETCHED_ALL_COLLECTIONS",
-    payload: collections
-  }
-}
-
-export function fetchAllCollections(term){
-  const jwt = localStorage.getItem("jwtToken")
-  const body = JSON.stringify({term: term})
-  return function(dispatch){
-    fetch(`http://localhost:3000/api/v1/collections`, {
-      method: 'get',
-      headers : {
-        "Authorization": "Bearer " + jwt
-      }
-    })
-    .then((res) => res.json())
-    .then((json) => {
-      dispatch(fetchedAllCollections(json))
-    })
-  }
-}
