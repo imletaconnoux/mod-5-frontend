@@ -1,7 +1,7 @@
 import React from 'react'
 import { searchVideos } from '../../actions/youtube'
 import { connect } from 'react-redux'
-import { Header, Icon, Popup, Checkbox } from 'semantic-ui-react'
+import { Header, Icon, Checkbox, Divider } from 'semantic-ui-react'
 
 class YoutubeForm extends React.Component{
 

@@ -145,7 +145,7 @@ function fetchedCollections(collections){
 export function fetchCollections(){
   const jwt = localStorage.getItem("jwtToken")
   return function(dispatch){
-    fetch(`http://localhost:3000/api/v1/collections`, {
+    fetch(`http://localhost:3000/api/v1/usercollections`, {
       method: 'get',
       headers : {
         "Authorization": "Bearer " + jwt
