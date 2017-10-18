@@ -10,6 +10,7 @@ import { fetchCollections } from './actions/collections'
 import { connect } from 'react-redux'
 import thunk from 'redux-thunk'
 import CollectionsContainer from './components/Collections/CollectionsContainer.js'
+import FollowingsContainer from './components/Followings/FollowingsContainer.js'
 import UsersContainer from './components/Users/UsersContainer.js'
 import Authorize from './components/Authorize'
 
@@ -28,6 +29,7 @@ class App extends Component {
           <Route path="/" component={Nav}/>
           <Route path="/" component={ YoutubeContainer } />
           <Route path="/collections" render={(props) => <AuthCollectionsContainer {...props} /> }/>
+          <Route path="/following" render={(props) => <FollowingsContainer {...props} /> }/>
           <Route path="/" render={(props) => <AuthUsersContainer {...props} /> }/>
 
 

@@ -13,8 +13,9 @@ import { fetchCollections } from './actions/collections'
 import youtubeReducer from './reducers/youtubeReducer'
 import usersReducer from './reducers/usersReducer'
 import collectionsReducer from './reducers/collectionsReducer'
+import followingsReducer from './reducers/followingsReducer'
 
-const rootReducer = combineReducers({videos: youtubeReducer, user: usersReducer, collections: collectionsReducer})
+const rootReducer = combineReducers({videos: youtubeReducer, user: usersReducer, collections: collectionsReducer, following: followingsReducer})
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))
 
 ReactDOM.render(<Provider store={store}><Router><App /></Router></Provider>, document.getElementById('root'));
