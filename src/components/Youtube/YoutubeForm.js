@@ -1,14 +1,15 @@
 import React from 'react'
 import { searchVideos } from '../../actions/youtube'
 import { connect } from 'react-redux'
-import { Header, Icon, Popup } from 'semantic-ui-react'
+import { Header, Icon, Popup, Checkbox } from 'semantic-ui-react'
 
 class YoutubeForm extends React.Component{
 
   constructor(){
     super()
     this.state = {
-      searchInput: ""
+      searchInput: "",
+      sortInput: "relevance"
     }
   }
 
@@ -19,13 +20,21 @@ class YoutubeForm extends React.Component{
     })
   }
 
+  handleSortInput = (event, {value}) => {
+    event.preventDefault()
+    this.setState({
+      sortInput: value
+    })
+  }
+
   handleSearch = (event) => {
     event.preventDefault()
     if (this.state.searchInput !== "") {
-      this.props.searchVideos(this.state.searchInput)
+      this.props.searchVideos(this.state.searchInput, this.state.sortInput)
     }
     this.setState({
-      searchInput: ""
+      searchInput: "",
+      sortInput: "relevance"
     })
   }
 
@@ -42,9 +51,36 @@ class YoutubeForm extends React.Component{
         </Header>
 
         <form onSubmit={this.handleSearch}>
-          <input type="text" value={this.state.searchInput} onChange={this.handleInputChange} placeholder="Enter keyword"/>
-          <input type="submit" value="Search"/>
-
+          <div class="inline fields">
+            <div class="field">
+              <input type="text" value={this.state.searchInput} onChange={this.handleInputChange} placeholder="Enter keyword"/>
+            </div>
+            <label>Sort by: </label>
+            <Checkbox
+              radio
+              label="Relevance    "
+              checked={this.state.sortInput === "relevance"}
+              value="relevance"
+              onClick={this.handleSortInput}
+            />
+            <Checkbox
+              radio
+              label="Newest "
+              checked={this.state.sortInput === "date"}
+              value="date"
+              onClick={this.handleSortInput}
+            />
+            <Checkbox
+              radio
+              label="Popularity  "
+              checked={this.state.sortInput === "rating"}
+              value="rating"
+              onClick={this.handleSortInput}
+            />
+            <div class="field">
+              <input type="submit" value="Search"/>
+            </div>
+          </div>
         </form><br/>
       </div>
     )
@@ -54,8 +90,8 @@ class YoutubeForm extends React.Component{
 
 function mapDispatchToProps(dispatch){
   return {
-    searchVideos: (term) => {
-      dispatch(searchVideos(term))
+    searchVideos: (term, sort) => {
+      dispatch(searchVideos(term, sort))
     }
   }
 }
