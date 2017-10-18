@@ -13,18 +13,21 @@ class CollectionDetail extends React.Component{
 
 
   render(){
-    if (this.props.collections.length > 0 ){
+
+    if (this.props.collections.length > 0){
       const collection = this.props.collections.filter((collection) => {
+
         return collection.id === parseInt(this.props.match.params.id)
       })
+      console.log(collection)
       return (
         <div>
           <h1> Your {collection[0].name} video collection </h1>
           <CollectionVideos videos={collection[0].videos} collection={collection[0]}/>
         </div>
         )
-    } else {
-      return(
+    }  else {
+      return (
         null
       )
     }

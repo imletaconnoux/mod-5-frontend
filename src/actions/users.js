@@ -21,6 +21,7 @@ export function loginUser(loginParams){
 
       if (json.user) {
       localStorage.setItem("jwtToken", json.jwt)
+      console.log(json.user)
       dispatch(loggedinUser(json.user))
       } else {
       window.alert(json.message)

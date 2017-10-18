@@ -1,7 +1,7 @@
 import React from 'react'
 import { Form, Checkbox } from 'semantic-ui-react'
 import { connect } from 'react-redux'
-import { addVideo, removeVideoFromCollection } from '../../actions/collections'
+import { addVideo, removeVideoFromCollection, addToCollection } from '../../actions/collections'
 
 
 class PopUpItem extends React.Component {
@@ -18,7 +18,12 @@ class PopUpItem extends React.Component {
   componentDidMount(){
 
     const video = this.props.collection.videos.filter((video) => {
-        return (video.title === this.props.video.snippet.title)
+        if (this.props.video.snippet) {
+          return (video.title === this.props.video.snippet.title)
+
+        } else {
+          return (video.title === this.props.video.title)
+        }
     })
 
     if (video.length > 0 ) {
@@ -37,9 +42,15 @@ class PopUpItem extends React.Component {
     this.setState({
       collection: !this.state.collection
     })
-    if (this.state.collection === false ) {
+    if (this.state.collection === false && this.props.video.snippet) {
       this.props.addVideo(this.props.video, this.props.collection)
-    } else {
+    } else if (this.state.collection === false){
+      console.log(this.props.video)
+      debugger
+      this.props.addToCollection(this.props.video, this.props.collection)
+
+    }
+    else {
 
       this.props.removeVideo(this.props.collection, this.state.databaseVideo)
 
@@ -67,6 +78,9 @@ function mapDispatchToProps(dispatch){
   return {
     addVideo: (video, collection) => {
     dispatch(addVideo(video, collection))
+    },
+    addToCollection: (video, collection) =>{
+      dispatch(addToCollection(video,collection))
     },
     removeVideo: (collection, video) => {
       dispatch(removeVideoFromCollection(collection,video))

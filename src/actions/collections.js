@@ -104,7 +104,6 @@ export function addVideo(video, collection){
 }
 
 function addedToCollection(video, collection){
-  debugger
   return {
     type: "ADDED_TO_COLLECTION",
     videoPayload: video,
@@ -112,7 +111,7 @@ function addedToCollection(video, collection){
   }
 }
 
-function addToCollection(video, collection){
+export function addToCollection(video, collection){
   const jwt = localStorage.getItem("jwtToken")
   const body = JSON.stringify({video_id: video.id, collection_id: collection.id})
   return function(dispatch){

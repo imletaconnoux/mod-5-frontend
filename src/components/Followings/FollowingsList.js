@@ -1,6 +1,6 @@
 import React from 'react'
 import FollowingItem from './FollowingItem'
-import { Grid } from 'semantic-ui-react'
+import { Grid, Header, Icon } from 'semantic-ui-react'
 
 const FollowingsList = (props) => {
 
@@ -12,10 +12,19 @@ const FollowingsList = (props) => {
 
 
   return (
-      <Grid centered>
-        {followings}
+      <div>
+      <Header as='h2' icon>
+        <Icon name='video play outline' color='red' />
+        Collections I Follow
+        <Header.Subheader>
+          Browse your favorite collections from other users
+        </Header.Subheader>
+      </Header>
+        <Grid centered>
+          {followings}
 
-      </Grid>
+        </Grid>
+      </div>
 
   )
 

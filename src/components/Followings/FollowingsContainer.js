@@ -4,6 +4,7 @@ import { Route } from 'react-router-dom'
 import { fetchFollowings } from '../../actions/followings'
 import FollowingsList from './FollowingsList'
 import { Header, Icon, Divider } from 'semantic-ui-react'
+import FollowingDetail from '../Followings/FollowingDetail'
 
 class FollowingsContainer extends React.Component{
 
@@ -16,14 +17,14 @@ class FollowingsContainer extends React.Component{
     console.log(this.props)
     return(
       <div>
-        <Header as='h2' icon>
-          <Icon name='video play outline' color='red' />
-          Collections I Follow
-          <Header.Subheader>
-            Browse your favorite collections from other users
-          </Header.Subheader>
-        </Header>
         <Route exact path="/following" render={(props) => <FollowingsList following={this.props.following} {...props} />}/>
+        <Route path="/following/:id" render={(routeProps) => {
+          const id = routeProps.match.params.id
+          const collection = this.props.following.filter((collection) => {
+            return collection.id === parseInt(id)
+          })
+          return <FollowingDetail collection={collection[0]} {...routeProps}/>
+          }} />
       </div>
     )
   }
