@@ -14,7 +14,7 @@ class CollectionForm extends React.Component{
 
   handleSubmit = (event) => {
     event.preventDefault()
-    
+
 
     if (this.state.collectionInput !== "") {
       this.props.createCollection(this.state.collectionInput)
@@ -49,7 +49,7 @@ class CollectionForm extends React.Component{
           <input type="text" value={this.state.collectionInput} onChange={this.handleInputChange} placeholder="Collection name"/>
           <input type="submit" value="Create"/>
 
-        </form><br/>
+        </form>
       </div>
     )
   }

@@ -1,7 +1,7 @@
 import React from 'react'
 import { searchVideos, searchCollections } from '../../actions/youtube'
 import { connect } from 'react-redux'
-import { Header, Icon, Checkbox, Divider } from 'semantic-ui-react'
+import { Grid, Header, Icon, Checkbox, Segment } from 'semantic-ui-react'
 
 class YoutubeForm extends React.Component{
 
@@ -42,15 +42,16 @@ class YoutubeForm extends React.Component{
   render(){
 
     return(
-      <div>
-        <Header as='h2' icon>
+
+      <Grid stackable columns={1} textAlign='center' style={{height: '100%'}} verticalAlign='middle'>
+        <Grid.Column>
+        <Header as='h1' icon>
           <Icon name='video play outline' color='red' />
-          The YouTubist
+          Welcome to YouTubist!
           <Header.Subheader>
-            Search for videos or existing user collections below. Save the ones your like to your collections.
+            Search for videos or user collections below. Save the ones your like to your collections.
           </Header.Subheader>
         </Header>
-
         <form onSubmit={this.handleSearch}>
           <div class="inline fields">
             <div class="field">
@@ -82,8 +83,10 @@ class YoutubeForm extends React.Component{
               <input type="submit" value="Search"/>
             </div>
           </div>
-        </form><br/>
-      </div>
+        </form>
+        </Grid.Column>
+      </Grid>
+
     )
   }
 

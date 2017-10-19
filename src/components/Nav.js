@@ -10,7 +10,7 @@ class Nav extends React.Component{
     return(
       <div className="ui secondary menu">
         <NavLink color='orange' activeClassName="inactive" className="item" to="/">My YouTubist</NavLink>
-        <NavLink activeClassName="active" className="item" to="/collections">My Collections</NavLink>
+        <NavLink activeClassName="active" className="item" to="/collections">Collections</NavLink>
         <NavLink activeClassName="active" className="item" to="/following">Following</NavLink>
         <div className="right menu">
           <NavLink activeClassName="inactive" className="item" onClick={this.props.logoutUser} to="/">Logout</NavLink>
@@ -20,7 +20,7 @@ class Nav extends React.Component{
   } else {
     return(
       <div className="ui secondary menu">
-        <NavLink color='orange' activeClassName="inactive" className="item" to="/">My YouTubist</NavLink>
+        <NavLink color='orange' activeClassName="inactive" className="item" to="/">The YouTubist</NavLink>
         <div className="right menu">
           <NavLink className="item" to="/login">Login</NavLink>
         </div>
