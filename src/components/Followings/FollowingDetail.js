@@ -1,7 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { fetchFollowings } from '../../actions/followings'
+import { fetchFollowings, fetchAllCollections } from '../../actions/followings'
 import FollowingVideos from './FollowingVideos'
+
 
 class FollowingDetail extends React.Component{
 
@@ -9,12 +10,13 @@ class FollowingDetail extends React.Component{
 
   componentDidMount(){
     this.props.fetchFollowings()
+    this.props.fetchAllCollections()
   }
 
 
   render(){
 
-    if (this.props.following.length > 0){
+    if (this.props.allCollections.length > 0){
       const collection = this.props.following.filter((collection) => {
 
         return collection.id === parseInt(this.props.match.params.id)
@@ -38,7 +40,8 @@ class FollowingDetail extends React.Component{
 
 function mapStateToProps(state){
   return {
-    following: state.following.list
+    following: state.following.list,
+    allCollections: state.following.allCollections
   }
 }
 
@@ -46,6 +49,9 @@ function mapDispatchToProps(dispatch){
   return {
     fetchFollowings: () => {
       dispatch(fetchFollowings())
+    },
+    fetchAllCollections: () => {
+      dispatch(fetchAllCollections())
     }
   }
 }

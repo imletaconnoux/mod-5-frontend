@@ -12,6 +12,7 @@ class YoutubeContainer extends React.Component {
 
 
   render(){
+    console.log("USER IN YOUTUBE CONATINER", this.props.user)
     console.log("YOUTUBE CONTAINER STATE", this.props)
     return (
       <div>
@@ -29,6 +30,7 @@ function mapStateToProps(state){
     youtubeResults: state.youtube.youtubeResults,
     collectionsResults: state.youtube.collectionsResults,
     isSearching: state.youtube.isSearching,
+    user: state.user.currentUser
 
   }
 }

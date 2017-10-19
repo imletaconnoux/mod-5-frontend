@@ -1,11 +1,11 @@
-function youtubeReducer(state = { isSearching: false, youtubeResults: [], collectionsResults: [], recommendationsKeys: []}, action){
+function youtubeReducer(state = { isSearching: false, youtubeResults: [], collectionsResults: []}, action){
   switch (action.type) {
     case "SEARCHING_VIDEOS":
       return Object.assign({}, state, {isSearching: true})
     case "SEARCHED_VIDEOS":
       return Object.assign({}, state, {youtubeResults: action.payload, isSearching: false})
     case "LOGGEDOUT_USER":
-      return Object.assign({}, state, {youtubeResults: [], isSearching: false, recommendations: [], recommendationsKeys: []})
+      return Object.assign({}, state, {youtubeResults: [], isSearching: false, collectionsResults: []})
     case "SEARCHED_COLLECTIONS":
       return Object.assign({}, state, {collectionsResults: action.payload})
     default:

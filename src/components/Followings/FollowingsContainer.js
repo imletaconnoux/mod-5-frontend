@@ -11,6 +11,7 @@ class FollowingsContainer extends React.Component{
 
   componentDidMount(){
     this.props.fetchFollowings()
+    console.log("USER IN FOLLOWINGS CONATINER", this.props.user)
   }
 
   render(){
@@ -34,7 +35,8 @@ class FollowingsContainer extends React.Component{
 
 function mapStateToProps(state){
   return{
-    following: state.following.list
+    following: state.following.list,
+    user: state.user.currentUser
   }
 }
 
