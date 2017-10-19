@@ -12,10 +12,11 @@ class FollowingItem extends React.Component{
   }
 
   render(){
+
     return(
       <Grid.Column width={5} centered>
         <Segment textAlign='center'>
-          <Link to={"/following/" + this.props.collection.id}>
+          <Link to={"/collections/" + this.props.collection.id}>
             <Image
               src={this.props.collection.image}
               size='medium'
@@ -29,7 +30,7 @@ class FollowingItem extends React.Component{
           <Segment.Group horizontal>
 
               <Segment textAlign='center'>
-                <Link to={"/following/" + this.props.collection.id}>
+                <Link to={"/collections/" + this.props.collection.id}>
                   <p>View <Icon name="object group"/> </p>
                 </Link>
               </Segment>

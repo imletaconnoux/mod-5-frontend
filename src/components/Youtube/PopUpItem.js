@@ -17,6 +17,7 @@ class PopUpItem extends React.Component {
 
   componentDidMount(){
 
+
     const video = this.props.collection.videos.filter((video) => {
         if (this.props.video.snippet) {
           return (video.title === this.props.video.snippet.title)
@@ -42,11 +43,11 @@ class PopUpItem extends React.Component {
     this.setState({
       collection: !this.state.collection
     })
+
     if (this.state.collection === false && this.props.video.snippet) {
       this.props.addVideo(this.props.video, this.props.collection)
     } else if (this.state.collection === false){
-      console.log(this.props.video)
-      debugger
+
       this.props.addToCollection(this.props.video, this.props.collection)
 
     }
@@ -59,6 +60,7 @@ class PopUpItem extends React.Component {
   }
 
   render(){
+
     return(
         <Form.Field>
             <Checkbox

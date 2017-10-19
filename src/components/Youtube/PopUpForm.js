@@ -13,7 +13,7 @@ class PopUpFrom extends React.Component{
   }
 
   handleClick = (event) => {
-    if (this.state.collectionInput !== ""){
+    if (this.state.collectionInput){
       this.props.createCollectionWithVideo(this.state.collectionInput, this.props.video)
 
     }

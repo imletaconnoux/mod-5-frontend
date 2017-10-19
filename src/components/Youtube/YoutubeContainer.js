@@ -29,8 +29,7 @@ function mapStateToProps(state){
   return {
     youtubeResults: state.youtube.youtubeResults,
     collectionsResults: state.youtube.collectionsResults,
-    isSearching: state.youtube.isSearching,
-    user: state.user.currentUser
+    isSearching: state.youtube.isSearching
 
   }
 }

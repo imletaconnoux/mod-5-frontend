@@ -13,7 +13,8 @@ const PopUp = (props) => {
       const PopUpList = props.collections.map((collection, index) => {
         return <PopUpItem key={index} collection={collection} video={props.video}/>
       })
-      
+
+      console.log("HELLO FROM POPUP COMP", PopUpList)
       return(
         <div>
           {PopUpList}

@@ -12,11 +12,11 @@ class CollectionsContainer extends React.Component{
 
   componentDidMount() {
     this.props.fetchCollections()
-    console.log("USER IN COLLECTIONS CONATINER", this.props.user)
+
   }
 
   render(){
-
+    console.log("COLLECTIONS CONTAINER COLLECTIONS", this.props.collections)
 
     return(
       <div>
@@ -52,8 +52,7 @@ class CollectionsContainer extends React.Component{
 
 function mapStateToProps(state){
   return {
-    collections: state.collections.list,
-    user: state.user.currentUser
+    collections: state.collections.list
   }
 }
 

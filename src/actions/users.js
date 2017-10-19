@@ -18,10 +18,8 @@ export function loginUser(loginParams){
       })
     .then((res) => res.json())
     .then((json) => {
-
       if (json.user) {
       localStorage.setItem("jwtToken", json.jwt)
-      console.log(json.user)
       dispatch(loggedinUser(json.user))
       } else {
       window.alert(json.message)
@@ -58,6 +56,29 @@ export function signupUser(loginParams){
     .then((json) => {
       localStorage.setItem("jwtToken", json.jwt)
       dispatch(loggedinUser(json.user))
+    })
+  }
+}
+
+function fetchedcurrentUser(user){
+  return {
+    type: "FETCHED_CURRENT_USER",
+    payload: user
+  }
+}
+
+export function currentUser(){
+  const jwt = localStorage.getItem("jwtToken")
+  return function(dispatch){
+    fetch(`http://localhost:3000/api/v1/users/me`, {
+      method: 'get',
+      headers : {
+        "Authorization": "Bearer " + jwt
+      }
+    })
+    .then((res) => res.json())
+    .then((json) => {
+      dispatch(fetchedcurrentUser(json))
     })
   }
 }

@@ -9,9 +9,10 @@ const FollowingsList = (props) => {
   const followings = props.collections.map((collection, index) => {
         return ( <FollowingItem key={index} collection={collection} />)
   })
-
+  console.log("HELLO FROM FOLLOWING LIST")
 
   return (
+
       <div>
       <Header as='h2' icon>
         <Icon name='video play outline' color='red' />

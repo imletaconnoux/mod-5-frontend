@@ -14,7 +14,7 @@ class CollectionItem extends React.Component{
 
   render(){
 
-
+    console.log(this.props.user)
 
 
 
@@ -71,4 +71,10 @@ function mapDispatchToProps(dispatch){
   }
 }
 
-export default connect(null, mapDispatchToProps)(CollectionItem)
+function mapStateToProps(state){
+  return {
+    user: state.user.currentUser
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CollectionItem)

@@ -7,6 +7,9 @@ function usersReducer(state = { currentUser: null } , action){
 
     case "LOGGEDOUT_USER":
       return Object.assign({}, state, {currentUser: null})
+
+    case "FETCHED_CURRENT_USER":
+      return Object.assign({}, state, {currentUser: action.payload})
     default:
         return state
     }

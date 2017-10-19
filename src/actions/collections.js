@@ -78,7 +78,13 @@ export function createCollectionWithVideo(name, video){
     .then((res) => res.json())
     .then((json) => {
       dispatch(createdCollection(json))
+      console.log(video)
+      debugger
+      if (video.snippet) {
       dispatch(addVideo(video, json))
+    } else {
+      dispatch(addToCollection(video, json))
+    }
     })
   }
 }
@@ -152,6 +158,7 @@ export function fetchCollections(){
     })
     .then((res) => res.json())
     .then((json) => {
+      console.log(json)
       dispatch(fetchedCollections(json))
     })
   }

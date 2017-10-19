@@ -3,56 +3,40 @@ import { Segment, Container, Card, Icon, Header, Modal } from 'semantic-ui-react
 import { removeVideoFromCollection } from '../../actions/collections'
 import { connect } from 'react-redux'
 import VideoOverlay from './VideoOverlay'
+import { currentUser } from '../../actions/users'
+import MyCollectionActions from './MyCollectionActions'
+import FollowCollectionActions from './FollowCollectionActions'
 
 class Video extends React.Component {
 
-  handleDelete = (event) => {
-    event.preventDefault()
-    this.props.removeVideoFromCollection(this.props.collection, this.props.video)
+  componentDidMount(){
+    if (this.props.user === null ){
+      this.props.currentUser()
+    }
   }
 
   render(){
-
+    console.log(this.props.collection, this.props.user)
     const link = `https://www.youtube.com/embed/${this.props.video.youtube_id}`
 
-
-    return(
-      <Segment>
-        <Segment as='h3' >
-        {this.props.video.title}
-        </Segment>
-        <Segment.Group horizontal>
-          <div className="ui internally celled grid">
-            <div className="row">
-              <div className="ten wide column">
-                <img src={this.props.video.thumbnail}/>
-              </div>
-              <div className="six wide column">
-                <Header size='em'>Your video comments:</Header>
-
-                <p> {this.props.video.comment} </p>
-              </div>
-            </div>
-          </div>
-      </Segment.Group>
-      <Segment.Group horizontal compact>
-          <Segment>
-            <Modal trigger={
-              <p>Watch Video <Icon name="video play outline"/> and Edit Comments  <Icon name="video play edit"/> </p>
-            } >
-              <VideoOverlay collection={this.props.collection} video={this.props.video}/>
-            </Modal>
-
-          </Segment>
-          <Segment onClick={this.handleDelete}>
-            <p>Remove <Icon name="delete"/> </p>
-          </Segment>
-          <Segment>
-            <p>Email <Icon name="send outline"/> </p>
-          </Segment>
-      </Segment.Group>
-    </Segment>
-    )
+    if (this.props.user && this.props.collection.user.id === this.props.user.id){
+      return(
+        <div>
+          <MyCollectionActions video={this.props.video} collection={this.props.collection}/>
+        </div>
+      )
+    } else if (this.props.user && this.props.collection.user.id !== this.props.user.id){
+      return(
+        <div>
+           <FollowCollectionActions video={this.props.video} collection={this.props.collection}/>
+        </div>
+      )
+    }
+    else {
+      return(
+        <p>Currently loading</p>
+      )
+    }
   }
 
 }
@@ -61,7 +45,16 @@ function mapDispatchToProps(dispatch){
   return{
     removeVideoFromCollection: (collection, video) => {
       dispatch(removeVideoFromCollection(collection, video))
+    },
+    currentUser: () => {
+      dispatch(currentUser())
     }
   }
 }
-export default connect(null, mapDispatchToProps)(Video)
+
+function mapStateToProps(state){
+  return {
+    user: state.user.currentUser
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Video)

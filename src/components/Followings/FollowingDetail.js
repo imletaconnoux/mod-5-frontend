@@ -15,7 +15,7 @@ class FollowingDetail extends React.Component{
 
 
   render(){
-
+        console.log("HELLO FROM FOLLOWING DETAIL")
     if (this.props.allCollections.length > 0){
       const collection = this.props.following.filter((collection) => {
 

@@ -4,7 +4,10 @@ import { Route } from 'react-router-dom'
 import { fetchFollowings } from '../../actions/followings'
 import FollowingsList from './FollowingsList'
 import { Header, Icon, Divider } from 'semantic-ui-react'
-import FollowingDetail from '../Followings/FollowingDetail'
+import FollowingDetail from './FollowingDetail'
+import CollectionDetail from '../Collections/CollectionDetail'
+
+
 
 class FollowingsContainer extends React.Component{
 
@@ -19,12 +22,13 @@ class FollowingsContainer extends React.Component{
     return(
       <div>
         <Route exact path="/following" render={(props) => <FollowingsList collections={this.props.following} {...props} />}/>
-        <Route path="/following/:id" render={(routeProps) => {
+        <Route path="/collections/:id" render={(routeProps) => {
           const id = routeProps.match.params.id
           const collection = this.props.following.filter((collection) => {
             return collection.id === parseInt(id)
           })
-          return <FollowingDetail collection={collection[0]} {...routeProps}/>
+          console.log(collection)
+          return <CollectionDetail collection={collection[0]} {...routeProps}/>
           }} />
       </div>
     )
@@ -35,8 +39,7 @@ class FollowingsContainer extends React.Component{
 
 function mapStateToProps(state){
   return{
-    following: state.following.list,
-    user: state.user.currentUser
+    following: state.following.list
   }
 }
 
