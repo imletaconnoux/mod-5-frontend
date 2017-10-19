@@ -4,7 +4,6 @@ import { Route } from 'react-router-dom'
 import { fetchFollowings } from '../../actions/followings'
 import FollowingsList from './FollowingsList'
 import { Header, Icon, Divider } from 'semantic-ui-react'
-import FollowingDetail from './FollowingDetail'
 import CollectionDetail from '../Collections/CollectionDetail'
 
 
