@@ -2,14 +2,15 @@ import React from 'react'
 import { Grid, Card, Button, Icon, Image, Segment, Form, Popup } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { unfollow } from '../../actions/followings'
+import { follow } from '../../actions/followings'
 
 
 class FollowingItem extends React.Component{
 
 
   handleFollow = (event) => {
-    console.log("CLICK", this.props.collection)
+    console.log("FOLLOW", this.props.collection)
+    this.props.follow(this.props.collection)
 
   }
 
@@ -47,8 +48,8 @@ class FollowingItem extends React.Component{
 
 function mapDispatchToProps(dispatch){
   return {
-    unfollow: (collection) => {
-      dispatch(unfollow(collection))
+    follow: (collection) => {
+      dispatch(follow(collection))
     }
   }
 }

@@ -45,6 +45,7 @@ export function searchCollections(term){
     .then((json) => {
       console.log(json)
       const collections = json.filter((collection) => collection.name.includes(term))
+
       dispatch(searchedCollections(collections))
     })
   }

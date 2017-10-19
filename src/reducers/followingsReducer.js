@@ -8,6 +8,10 @@ function followingsReducer(state = { list: [], allCollections: [] } , action){
     case "UNFOLLOWED":
       return Object.assign({}, state, {list: state.list.filter((collection) => collection.id !== action.payload.following_id)})
 
+    case "FOLLOWED":
+      return Object.assign({}, state, {list: [...state.list, action.payload: {} ]})
+
+
     case "FETCHED_ALL_COLLECTIONS":
       return Object.assign({}, state, {allCollections: action.payload})
 

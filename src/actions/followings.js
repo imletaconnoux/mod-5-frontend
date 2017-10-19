@@ -46,6 +46,35 @@ export function unfollow(collection){
   }
 }
 
+function followed(collection){
+  return {
+    type: "FOLLOWED",
+    payload: collection
+  }
+}
+
+export function follow(collection){
+  const jwt = localStorage.getItem("jwtToken")
+  const body = JSON.stringify({following_id: collection.id})
+  return function(dispatch){
+    fetch(`http://localhost:3000/api/v1/follows`, {
+      method: 'post',
+      body: body,
+      headers: {
+        "Authorization": "Bearer " + jwt,
+       "Accept": "application/json",
+       "Content-Type":"application/json"
+     }
+    })
+    .then((res) => res.json())
+    .then((json) => {
+
+      dispatch(followed(collection))
+    })
+  }
+
+}
+
 function fetchedAllCollections(json){
   return{
     type: "FETCHED_ALL_COLLECTIONS",
