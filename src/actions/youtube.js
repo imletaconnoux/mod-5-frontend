@@ -24,8 +24,7 @@ export function searchVideos(term, sort){
 }
 
 function searchedCollections(collections){
-  console.log(collections)
-  debugger
+
   return {
     type: "SEARCHED_COLLECTIONS",
     payload: collections

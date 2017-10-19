@@ -12,8 +12,6 @@ class YoutubeContainer extends React.Component {
 
 
   render(){
-    console.log("USER IN YOUTUBE CONATINER", this.props.user)
-    console.log("YOUTUBE CONTAINER STATE", this.props)
     return (
       <div>
         <Route exact path="/" component={YoutubeForm}/>

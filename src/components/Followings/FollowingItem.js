@@ -2,57 +2,54 @@ import React from 'react'
 import { Grid, Card, Button, Icon, Image, Segment, Form, Popup } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { unfollow } from '../../actions/followings'
+import UnfollowActions from './UnfollowActions'
+import FollowActions from './FollowActions'
+import { currentUser } from '../../actions/users'
 
 class FollowingItem extends React.Component{
 
-  handleUnfollow = (event) => {
-    console.log("CLICK", this.props.collection)
-    this.props.unfollow(this.props.collection)
+  componentDidMount(){
+    if (this.props.user === null) {
+      this.props.currentUser()
+    }
   }
+
 
   render(){
 
-    return(
-      <Grid.Column width={5} centered>
-        <Segment textAlign='center'>
-          <Link to={"/collections/" + this.props.collection.id}>
-            <Image
-              src={this.props.collection.image}
-              size='medium'
-              bordered
-              centered
-              label={{ as: 'a', color: 'red', content: `${this.props.collection.name} by ${this.props.collection.user.name}`, ribbon: true }}
-            />
-
-
-          </Link>
-          <Segment.Group horizontal>
-
-              <Segment textAlign='center'>
-                <Link to={"/collections/" + this.props.collection.id}>
-                  <p>View <Icon name="object group"/> </p>
-                </Link>
-              </Segment>
-              <Segment onClick={this.handleUnfollow} textAlign='center'>
-                <p>Unfollow <Icon name="delete"/> </p>
-              </Segment>
-          </Segment.Group>
-        </Segment>
-
-
-      </Grid.Column>
-    )
+    if (this.props.user){
+      const followingCollection = this.props.collection.followers.filter((user) => user.id === this.props.user.id)
+      if (followingCollection.length > 0) {
+        return(
+          <UnfollowActions collection={this.props.collection}/>
+        )
+      } else {
+        return(
+          <FollowActions collection={this.props.collection}/>
+        )
+      }
+    } else {
+      return(
+        <div>
+          Loading
+        </div>
+      )
+    }
   }
 
 }
 
 function mapDispatchToProps(dispatch){
   return {
-    unfollow: (collection) => {
-      dispatch(unfollow(collection))
+    currentUser: () => {
+      dispatch(currentUser())
     }
   }
 }
 
-export default connect(null, mapDispatchToProps)(FollowingItem)
+function mapStateToProps(state){
+  return {
+    user: state.user.currentUser
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(FollowingItem)
