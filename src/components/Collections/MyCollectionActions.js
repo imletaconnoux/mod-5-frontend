@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import VideoOverlay from './VideoOverlay'
 import { currentUser } from '../../actions/users'
 
+
 class Video extends React.Component {
 
   handleDelete = (event) => {
@@ -14,6 +15,7 @@ class Video extends React.Component {
 
   render(){
 
+  
     const link = `https://www.youtube.com/embed/${this.props.video.youtube_id}`
 
 
@@ -66,5 +68,11 @@ function mapDispatchToProps(dispatch){
   }
 }
 
+function mapStateToProps(state){
+  return{
+    relatedVideos: state.youtube.relatedVideos
+  }
+}
 
-export default connect(null, mapDispatchToProps)(Video)
+
+export default connect(mapStateToProps, mapDispatchToProps)(Video)

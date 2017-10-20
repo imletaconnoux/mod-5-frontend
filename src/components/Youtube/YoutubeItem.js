@@ -1,6 +1,6 @@
 import React from 'react'
 import PopUp from './PopUp'
-import { Card, Button, Icon, Divider, Segment, Popup, Form} from 'semantic-ui-react'
+import { Grid, Card, Button, Icon, Divider, Segment, Popup, Form} from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { createCollectionWithVideo } from '../../actions/collections'
 import { fetchCollections } from '../../actions/collections'
@@ -15,7 +15,7 @@ class YoutubeItem extends React.Component{
   render(){
     const link = `https://www.youtube.com/embed/${this.props.video.id.videoId}`
     return (
-      <div>
+      <Grid.Column width={9} centered>
         <iframe aligned="center" width="560" height="315" src={link}
         frameBorder="0"
         allowFullScreen></iframe>
@@ -35,8 +35,7 @@ class YoutubeItem extends React.Component{
             </Form>
           </Popup>
         </Segment>
-        <Divider clearing />
-      </div>
+      </Grid.Column>
     )
   }
 }

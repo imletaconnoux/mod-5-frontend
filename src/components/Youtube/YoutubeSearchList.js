@@ -1,5 +1,6 @@
 import React from 'react'
 import YoutubeItem from './YoutubeItem'
+import { Grid } from 'semantic-ui-react'
 
 const YoutubeSearchList = (props) => {
 
@@ -8,9 +9,9 @@ const YoutubeSearchList = (props) => {
   })
 
   return (
-    <div>
+    <Grid textAlign='center'>
       {youtubeItems}
-    </div>
+    </Grid>
   )
 }
 

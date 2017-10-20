@@ -29,9 +29,11 @@ class YoutubeForm extends React.Component{
 
   handleSearch = (event) => {
     event.preventDefault()
-    if (this.state.searchInput !== "") {
+    if (this.state.searchInput !== "" && localStorage.getItem('jwtToken')) {
       this.props.searchVideos(this.state.searchInput, this.state.sortInput)
       this.props.searchCollections(this.state.searchInput)
+    } else if (this.state.searchInput !== ""){
+      this.props.searchVideos(this.state.searchInput, this.state.sortInput)
     }
     this.setState({
       searchInput: "",
@@ -43,13 +45,16 @@ class YoutubeForm extends React.Component{
 
     return(
 
-      <Grid stackable columns={1} textAlign='center' style={{height: '100%'}} verticalAlign='middle'>
+      <Grid stackable columns={1} textAlign='center' style={{height: '80%'}} verticalAlign='middle'>
         <Grid.Column>
         <Header as='h1' icon>
           <Icon name='video play outline' color='red' />
           Welcome to YouTubist!
           <Header.Subheader>
-            Search for videos or user collections below. Save the ones your like to your collections.
+            Search for videos and collections below.
+          </Header.Subheader>
+          <Header.Subheader>
+            Save the videos and follow the collections you like.
           </Header.Subheader>
         </Header>
         <form onSubmit={this.handleSearch}>
@@ -60,21 +65,21 @@ class YoutubeForm extends React.Component{
             <label>Sort by: </label>
             <Checkbox
               radio
-              label="Relevance    "
+              label="Relevance"
               checked={this.state.sortInput === "relevance"}
               value="relevance"
               onClick={this.handleSortInput}
             />
             <Checkbox
               radio
-              label="Newest "
+              label="Newest"
               checked={this.state.sortInput === "date"}
               value="date"
               onClick={this.handleSortInput}
             />
             <Checkbox
               radio
-              label="Popularity  "
+              label="Popularity"
               checked={this.state.sortInput === "rating"}
               value="rating"
               onClick={this.handleSortInput}
