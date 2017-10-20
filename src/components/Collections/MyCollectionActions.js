@@ -1,5 +1,5 @@
 import React from 'react'
-import { Segment, Container, Card, Icon, Header, Modal } from 'semantic-ui-react'
+import { Grid, Segment, Container, Card, Icon, Header, Modal } from 'semantic-ui-react'
 import { removeVideoFromCollection } from '../../actions/collections'
 import { connect } from 'react-redux'
 import VideoOverlay from './VideoOverlay'
@@ -15,11 +15,12 @@ class Video extends React.Component {
 
   render(){
 
-  
+
     const link = `https://www.youtube.com/embed/${this.props.video.youtube_id}`
 
 
     return(
+      <Grid.Column width={8} centered>
       <Segment>
         <Segment as='h3' >
         {this.props.video.title}
@@ -38,23 +39,22 @@ class Video extends React.Component {
             </div>
           </div>
       </Segment.Group>
-      <Segment.Group horizontal compact>
+      <Segment.Group horizontal raised>
           <Segment>
             <Modal trigger={
-              <p>Watch Video <Icon name="video play outline"/> and Edit Comments  <Icon name="video play edit"/> </p>
+              <p>Watch Video and Related Videos<Icon name="video play outline" size="medium" color="red"/> and Edit Comments  <Icon name="edit" size="medium" color="red"/> </p>
             } >
               <VideoOverlay collection={this.props.collection} video={this.props.video}/>
             </Modal>
 
           </Segment>
           <Segment onClick={this.handleDelete}>
-            <p>Remove <Icon name="delete"/> </p>
+            <p>Remove <Icon name="delete" size="medium" color="red"/> </p>
           </Segment>
-          <Segment>
-            <p>Email <Icon name="send outline"/> </p>
-          </Segment>
+
       </Segment.Group>
     </Segment>
+    </Grid.Column>
     )
   }
 

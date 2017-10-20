@@ -1,6 +1,6 @@
 import React from 'react'
 import Video from './Video'
-import { Container } from 'semantic-ui-react'
+import { Grid } from 'semantic-ui-react'
 
 const CollectionVideos = (props) => {
 
@@ -9,9 +9,9 @@ const CollectionVideos = (props) => {
   })
   return (
 
-    <div>
+    <Grid textAlign='center' columns={1}>
       {videoList}
-    </div>
+    </Grid>
   )
 }
 

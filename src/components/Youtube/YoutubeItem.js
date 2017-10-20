@@ -16,11 +16,15 @@ class YoutubeItem extends React.Component{
     const link = `https://www.youtube.com/embed/${this.props.video.id.videoId}`
     return (
       <Grid.Column width={9} centered>
+        <Segment>
+        <Segment as='h3'>
+        {this.props.video.snippet.title}
+        </Segment>
         <iframe aligned="center" width="560" height="315" src={link}
         frameBorder="0"
         allowFullScreen></iframe>
         <Segment raised>
-        {this.props.video.snippet.title}
+          Add to personal collection
           <Popup
             trigger={<Icon name="plus square outline" size="big" color="red"/>}
             size='huge'
@@ -34,6 +38,7 @@ class YoutubeItem extends React.Component{
 
             </Form>
           </Popup>
+        </Segment>
         </Segment>
       </Grid.Column>
     )

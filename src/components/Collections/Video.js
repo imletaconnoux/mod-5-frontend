@@ -1,5 +1,5 @@
 import React from 'react'
-import { Segment, Container, Card, Icon, Header, Modal } from 'semantic-ui-react'
+import { Segment, Container, Card, Icon, Header, Grid } from 'semantic-ui-react'
 import { removeVideoFromCollection } from '../../actions/collections'
 import { connect } from 'react-redux'
 import VideoOverlay from './VideoOverlay'
@@ -21,15 +21,15 @@ class Video extends React.Component {
 
     if (this.props.user && this.props.collection.user.id === this.props.user.id){
       return(
-        <div>
+        <Grid.Row>
           <MyCollectionActions video={this.props.video} collection={this.props.collection}/>
-        </div>
+        </Grid.Row>
       )
     } else if (this.props.user && this.props.collection.user.id !== this.props.user.id){
       return(
-        <div>
+        <Grid.Row>
            <FollowCollectionActions video={this.props.video} collection={this.props.collection}/>
-        </div>
+        </Grid.Row>
       )
     }
     else {
