@@ -6,7 +6,7 @@ const RelatedVideosList = (props) => {
 
 
   const relatedItems = props.relatedVideos.map((video, index) => {
-    return <RelatedVideoItem video={video} key={index}/>
+    return <RelatedVideoItem video={video} key={index} handleVideoClick={props.handleVideoClick}/>
   })
 
   return (

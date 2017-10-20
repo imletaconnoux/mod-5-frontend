@@ -1,12 +1,39 @@
 import React from 'react'
-import { Grid, Segment, Container, Card, Icon, Header, Modal } from 'semantic-ui-react'
+import { Divider, Grid, Segment, Container, Card, Icon, Header, Modal, Form, TextArea, Button } from 'semantic-ui-react'
 import { removeVideoFromCollection } from '../../actions/collections'
 import { connect } from 'react-redux'
 import VideoOverlay from './VideoOverlay'
 import { currentUser } from '../../actions/users'
+import { updateVideoComment } from '../../actions/collections'
 
 
 class Video extends React.Component {
+
+  constructor(){
+    super()
+    this.state = {
+      videoComment: ""
+    }
+  }
+
+  componentDidMount(){
+
+    this.setState({
+      videoComment: this.props.video.comment
+    })
+  }
+
+  handleTextInput = (event) => {
+    event.preventDefault()
+    this.setState({
+      videoComment: event.target.value
+    })
+  }
+
+  handleSubmit = (event) => {
+    event.preventDefault()
+    this.props.updateVideoComment(this.props.video.id, this.state.videoComment, this.props.collection.id)
+  }
 
   handleDelete = (event) => {
     event.preventDefault()
@@ -20,29 +47,30 @@ class Video extends React.Component {
 
 
     return(
-      <Grid.Column width={8} centered>
+      <Grid.Column width={12} centered>
       <Segment>
         <Segment as='h3' >
         {this.props.video.title}
         </Segment>
         <Segment.Group horizontal>
-          <div className="ui internally celled grid">
-            <div className="row">
-              <div className="ten wide column">
-                <img src={this.props.video.thumbnail}/>
-              </div>
-              <div className="six wide column">
+            <Segment>
+              <iframe aligned="center" width="560" height="315" src={link}
+                frameBorder="0"
+                allowFullScreen></iframe>
+            </Segment>
+            <Segment>
                 <Header size='em'>Your video comments:</Header>
-
-                <p> {this.props.video.comment} </p>
-              </div>
-            </div>
-          </div>
-      </Segment.Group>
+                <Form onSubmit={this.handleSubmit}>
+                  <TextArea autoHeight style={{ minHeight: 250 }} onChange={this.handleTextInput} value={this.state.videoComment} />
+                  <Divider hidden />
+                  <Button primary>Update</Button>
+                </Form>
+              </Segment>
+          </Segment.Group>
       <Segment.Group horizontal raised>
           <Segment>
             <Modal trigger={
-              <p>Watch Video and Related Videos<Icon name="video play outline" size="medium" color="red"/> and Edit Comments  <Icon name="edit" size="medium" color="red"/> </p>
+              <p>Watch Video and Related Videos<Icon name="video play outline" size="medium" color="red"/></p>
             } >
               <VideoOverlay collection={this.props.collection} video={this.props.video}/>
             </Modal>
@@ -64,7 +92,11 @@ function mapDispatchToProps(dispatch){
   return{
     removeVideoFromCollection: (collection, video) => {
       dispatch(removeVideoFromCollection(collection, video))
+    },
+    updateVideoComment: (id, comment, collection_id) => {
+      dispatch(updateVideoComment(id, comment, collection_id))
     }
+
   }
 }
 

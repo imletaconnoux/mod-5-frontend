@@ -16,7 +16,7 @@ class YoutubeItem extends React.Component{
     const link = `https://www.youtube.com/embed/${this.props.video.id.videoId}`
     return (
       <Grid.Column width={9} centered>
-        <Segment>
+        <Segment textAlign='center'>
         <Segment as='h3'>
         {this.props.video.snippet.title}
         </Segment>

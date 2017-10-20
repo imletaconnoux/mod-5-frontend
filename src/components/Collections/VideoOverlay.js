@@ -1,76 +1,55 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Modal, Form, TextArea, Button, Header, Segment } from 'semantic-ui-react'
+import { Modal, Form, TextArea, Button, Header, Segment, Popup, Icon } from 'semantic-ui-react'
 import { updateVideoComment } from '../../actions/collections'
 import { fetchRelatedVideos } from '../../actions/youtube'
 import RelatedVideosList from './RelatedVideosList'
+
+import RelatedVideoLink from './RelatedVideoLink'
 
 class VideoOverlay extends React.Component{
 
   constructor(){
     super()
     this.state = {
-      videoComment: ""
+      video: null
     }
   }
 
   componentDidMount(){
-
-    this.setState({
-      videoComment: this.props.video.comment
-    })
-
     this.props.fetchRelatedVideos(this.props.video.youtube_id)
   }
 
-  handleTextInput = (event) => {
-    event.preventDefault()
+
+  handleVideoClick = (video) => {
     this.setState({
-      videoComment: event.target.value
+      video: video
     })
   }
 
-  handleSubmit = (event) => {
-    event.preventDefault()
-    this.props.updateVideoComment(this.props.video.id, this.state.videoComment, this.props.collection.id)
-  }
-
   render(){
-    console.log("RELATED VIDEOS", this.props.relatedVideos)
-    const link = `https://www.youtube.com/embed/${this.props.video.youtube_id}`
+    if (this.state.video === null && this.props.relatedVideos.length > 0 ) {
+      const link = `https://www.youtube.com/embed/${this.props.relatedVideos[0].id.videoId}`
     return(
-      <Segment>
-          <Header> {this.props.video.title} </Header>
-        <Modal.Content wrapped aligned="center" scrolling>
-        <iframe wrapped width="560" height="315" aligned="center" src={link} frameBorder="0" allowFullScreen></iframe>
-          <Modal.Description>
-            <Header> Related Videos: </Header>
-            <RelatedVideosList relatedVideos={this.props.relatedVideos} />
-
-
-
-          </Modal.Description>
-          <Modal.Description>
-            <p>Video Comments:</p>
-              <Form onSubmit={this.handleSubmit}>
-                <TextArea onChange={this.handleTextInput} value={this.state.videoComment} />
-                <Button primary>Update</Button>
-              </Form>
-          </Modal.Description>
-        </Modal.Content>
-      </Segment>
-
-
+      <RelatedVideoLink link={link} relatedVideos={this.props.relatedVideos} video={this.props.relatedVideos[0]} handleVideoClick={this.handleVideoClick} />
     )
+  } else if (this.state.video !== null && this.props.relatedVideos.length > 0 )  {
+      const link = `https://www.youtube.com/embed/${this.state.video.id.videoId}`
+    return(
+      <RelatedVideoLink link={link} relatedVideos={this.props.relatedVideos} video={this.state.video} handleVideoClick={this.handleVideoClick} />
+    )
+
+  } else {
+    return(
+      null
+    )
+  }
   }
 
 }
 
 function mapDispatchToProps(dispatch){
   return {
-    updateVideoComment: (id, comment, collection_id) => {
-      dispatch(updateVideoComment(id, comment, collection_id))
-    },
     fetchRelatedVideos: (youtubeId) => {
       dispatch(fetchRelatedVideos(youtubeId))
     }

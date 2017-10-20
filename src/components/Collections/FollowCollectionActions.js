@@ -1,8 +1,9 @@
 import React from 'react'
-import { Grid, Segment, Icon, Header, Popup, Form } from 'semantic-ui-react'
+import { Grid, Segment, Icon, Header, Popup, Form, Modal} from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import PopUp from '../Youtube/PopUp'
 import { fetchCollections } from '../../actions/collections'
+import VideoOverlay from './VideoOverlay'
 
 class FollowCollectionActions extends React.Component {
 
@@ -26,9 +27,7 @@ class FollowCollectionActions extends React.Component {
     return(
       <Grid.Column width={8} centered>
         <Segment>
-          <Segment as='h3'>
-          {this.props.video.title}
-          </Segment>
+          <Segment as='h3'> {this.props.video.title} </Segment>
           <iframe aligned="center" width="560" height="315" src={link}
             frameBorder="0"
             allowFullScreen></iframe>
@@ -51,7 +50,11 @@ class FollowCollectionActions extends React.Component {
               </Popup>
               </Segment>
               <Segment >
-                <label>Watch related videos <Icon name="video play outline" size="medium" color='red'/></label>
+                <Modal trigger={
+                <label>View related videos <Icon name="video play outline" size="medium" color='red'/></label>
+                }>
+                <VideoOverlay video={this.props.video}/>
+                </Modal>
               </Segment>
             </Segment.Group>
           </Segment>
