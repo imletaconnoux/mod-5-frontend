@@ -17,7 +17,11 @@ class VideoOverlay extends React.Component{
   }
 
   componentDidMount(){
+    if (this.props.video.youtube_id) {
     this.props.fetchRelatedVideos(this.props.video.youtube_id)
+    } else if (this.props.video.id.videoId) {
+    this.props.fetchRelatedVideos(this.props.video.id.videoId)
+    }
   }
 
 
