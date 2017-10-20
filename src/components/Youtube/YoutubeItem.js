@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { createCollectionWithVideo } from '../../actions/collections'
 import { fetchCollections } from '../../actions/collections'
 import VideoOverlay from '../Collections/VideoOverlay'
+import { clearRelatedVideos } from '../../actions/youtube'
 
 class YoutubeItem extends React.Component{
 
@@ -12,6 +13,10 @@ class YoutubeItem extends React.Component{
     this.props.fetchCollections()
   }
 
+  closeModal = (event) => {
+    event.preventDefault()
+    this.props.clearRelatedVideos()
+  }
 
   render(){
     const link = `https://www.youtube.com/embed/${this.props.video.id.videoId}`
@@ -42,7 +47,8 @@ class YoutubeItem extends React.Component{
             <Segment >
               <Modal trigger={
               <label>View related videos <Icon name="video play outline" size="medium" color='red'/></label>
-              }>
+              }
+              onClose={this.closeModal}>
               <VideoOverlay video={this.props.video}/>
               </Modal>
             </Segment>
@@ -63,6 +69,9 @@ function mapDispatchToProps(dispatch){
   return {
     fetchCollections: () => {
       dispatch(fetchCollections())
+    },
+    clearRelatedVideos: () => {
+      dispatch(clearRelatedVideos())
     }
   }
 }

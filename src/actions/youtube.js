@@ -67,3 +67,10 @@ export function fetchRelatedVideos(youtubeId){
     })
   }
 }
+
+export function clearRelatedVideos(){
+  debugger
+  return {
+    type: "CLEAR_RELATED_VIDEOS"
+  }
+}

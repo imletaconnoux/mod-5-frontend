@@ -10,6 +10,8 @@ function youtubeReducer(state = { isSearching: false, youtubeResults: [], collec
       return Object.assign({}, state, {collectionsResults: action.payload})
     case "FETCHED_RELATED_VIDEOS":
       return Object.assign({}, state, {relatedVideos: action.payload})
+    case "CLEAR_RELATED_VIDEOS":
+      return Object.assign({}, state, {relatedVideos: []})
     default:
       return state
   }

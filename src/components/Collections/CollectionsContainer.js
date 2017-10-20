@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid, List, Loader, Segment} from 'semantic-ui-react'
+import { Divider} from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { Route } from 'react-router-dom'
 import CollectionsList from './CollectionsList'
@@ -24,6 +24,7 @@ class CollectionsContainer extends React.Component{
 
 
         <Route exact path="/collections" component={CollectionForm} />
+        <Divider hidden />
         <Route exact path="/collections" render={(props) => <CollectionsList collections={this.props.collections} {...props} />}/>
 
 

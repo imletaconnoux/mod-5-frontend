@@ -4,20 +4,22 @@ import { connect } from 'react-redux'
 import PopUp from '../Youtube/PopUp'
 import { fetchCollections } from '../../actions/collections'
 import VideoOverlay from './VideoOverlay'
+import { clearRelatedVideos } from '../../actions/youtube'
 
 class FollowCollectionActions extends React.Component {
 
   componentDidMount(){
-
     this.props.fetchCollections()
-
   }
 
   handleDelete = (event) => {
     event.preventDefault()
-
   }
 
+  closeModal = (event) => {
+    event.preventDefault()
+    this.props.clearRelatedVideos()
+  }
   render(){
     console.log("FOLLOW COLLECTION ACTION", this.props)
 
@@ -52,7 +54,8 @@ class FollowCollectionActions extends React.Component {
               <Segment >
                 <Modal trigger={
                 <label>View related videos <Icon name="video play outline" size="medium" color='red'/></label>
-                }>
+                }
+                onClose={this.closeModal}>
                 <VideoOverlay video={this.props.video}/>
                 </Modal>
               </Segment>
@@ -75,6 +78,9 @@ function mapDispatchToProps(dispatch){
   return {
     fetchCollections: () => {
       dispatch(fetchCollections())
+    },
+    clearRelatedVideos: () => {
+      dispatch(clearRelatedVideos())
     }
   }
 }

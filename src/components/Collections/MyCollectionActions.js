@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import VideoOverlay from './VideoOverlay'
 import { currentUser } from '../../actions/users'
 import { updateVideoComment } from '../../actions/collections'
-
+import { clearRelatedVideos } from '../../actions/youtube'
 
 class Video extends React.Component {
 
@@ -17,10 +17,14 @@ class Video extends React.Component {
   }
 
   componentDidMount(){
-
     this.setState({
       videoComment: this.props.video.comment
     })
+  }
+
+  closeModal = (event) => {
+    event.preventDefault()
+    this.props.clearRelatedVideos()
   }
 
   handleTextInput = (event) => {
@@ -71,7 +75,8 @@ class Video extends React.Component {
           <Segment>
             <Modal trigger={
               <p>Watch Video and Related Videos<Icon name="video play outline" size="medium" color="red"/></p>
-            } >
+            }
+              onClose={this.closeModal}>
               <VideoOverlay collection={this.props.collection} video={this.props.video}/>
             </Modal>
 
@@ -95,8 +100,10 @@ function mapDispatchToProps(dispatch){
     },
     updateVideoComment: (id, comment, collection_id) => {
       dispatch(updateVideoComment(id, comment, collection_id))
+    },
+    clearRelatedVideos: () => {
+      dispatch(clearRelatedVideos())
     }
-
   }
 }
 
