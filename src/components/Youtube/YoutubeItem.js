@@ -46,7 +46,7 @@ class YoutubeItem extends React.Component{
             </Segment>
             <Segment >
               <Modal trigger={
-              <label>View related videos <Icon name="video play outline" size="medium" color='red'/></label>
+              <label>Related Videos <Icon name="video play outline" size="medium" color='red'/></label>
               }
               onClose={this.closeModal}>
               <VideoOverlay video={this.props.video}/>

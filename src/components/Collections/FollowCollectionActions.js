@@ -27,7 +27,7 @@ class FollowCollectionActions extends React.Component {
 
 
     return(
-      <Grid.Column width={8} centered>
+      <Grid.Column width={7} centered>
         <Segment>
           <Segment as='h3'> {this.props.video.title} </Segment>
           <iframe aligned="center" width="560" height="315" src={link}
@@ -53,7 +53,7 @@ class FollowCollectionActions extends React.Component {
               </Segment>
               <Segment >
                 <Modal trigger={
-                <label>View related videos <Icon name="video play outline" size="medium" color='red'/></label>
+                <label>Related Videos <Icon name="video play outline" size="medium" color='red'/></label>
                 }
                 onClose={this.closeModal}>
                 <VideoOverlay video={this.props.video}/>

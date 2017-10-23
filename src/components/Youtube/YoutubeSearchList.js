@@ -9,8 +9,10 @@ const YoutubeSearchList = (props) => {
   })
 
   return (
-    <Grid textAlign='center'>
+    <Grid textAlign='center' columns={1}>
+      <Grid.Row>
       {youtubeItems}
+      </Grid.Row>
     </Grid>
   )
 }

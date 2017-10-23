@@ -49,7 +49,7 @@ class YoutubeForm extends React.Component{
         <Grid.Column>
         <Header as='h1' icon>
           <Icon name='video play outline' color='red' />
-          Welcome to YouTubist!
+          Welcome to The YouTubist!
           <Header.Subheader>
             Search for videos and collections below.
           </Header.Subheader>

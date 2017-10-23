@@ -74,7 +74,7 @@ class Video extends React.Component {
       <Segment.Group horizontal raised>
           <Segment>
             <Modal trigger={
-              <p>Watch Video and Related Videos<Icon name="video play outline" size="medium" color="red"/></p>
+              <p>Related Videos <Icon name="video play outline" size="medium" color="red"/></p>
             }
               onClose={this.closeModal}>
               <VideoOverlay collection={this.props.collection} video={this.props.video}/>
