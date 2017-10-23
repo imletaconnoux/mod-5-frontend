@@ -14,8 +14,9 @@ import youtubeReducer from './reducers/youtubeReducer'
 import usersReducer from './reducers/usersReducer'
 import collectionsReducer from './reducers/collectionsReducer'
 import followingsReducer from './reducers/followingsReducer'
+import commentsReducer from './reducers/commentsReducer'
 
-const rootReducer = combineReducers({youtube: youtubeReducer, user: usersReducer, collections: collectionsReducer, following: followingsReducer})
+const rootReducer = combineReducers({youtube: youtubeReducer, user: usersReducer, collections: collectionsReducer, following: followingsReducer, comments: commentsReducer})
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))
 
 ReactDOM.render(<Provider store={store}><Router><App /></Router></Provider>, document.getElementById('root'));

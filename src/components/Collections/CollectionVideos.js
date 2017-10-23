@@ -5,7 +5,9 @@ import { Grid } from 'semantic-ui-react'
 const CollectionVideos = (props) => {
 
   const videoList = props.videos.map((video, index) => {
-    return <Video video={video} key={index} collection={props.collection} />
+    const comment = props.comments.filter((comment) => comment.video_id === video.id)
+    console.log("CONSOLE LOGGING COMMENT", comment)
+    return <Video comment={comment[0]} video={video} key={index} collection={props.collection} />
   })
   return (
 

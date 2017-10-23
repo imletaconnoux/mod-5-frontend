@@ -103,6 +103,27 @@ export function addVideo(video, collection){
     .then((res) => res.json())
     .then((json) => {
       dispatch(addToCollection(json, collection))
+      dispatch(addDefaultComment(json))
+    })
+  }
+}
+
+function addDefaultComment(video){
+  const jwt = localStorage.getItem("jwtToken")
+  const body = JSON.stringify({video_id: video.id})
+  return function(dispatch){
+    fetch(`http://localhost:3000/api/v1/comments`, {
+      method: 'post',
+      body: body,
+      headers: {
+        "Authorization": "Bearer " + jwt,
+       "Accept": "application/json",
+       "Content-Type":"application/json"
+     }
+    })
+    .then((res) => res.json())
+    .then((json) => {
+      console.log(json)
     })
   }
 }
@@ -157,6 +178,7 @@ export function fetchCollections(){
     .then((res) => res.json())
     .then((json) => {
       dispatch(fetchedCollections(json))
+
     })
   }
 }
@@ -199,6 +221,7 @@ export function removeVideoFromCollection(collection, video){
   const jwt = localStorage.getItem("jwtToken")
   const body = JSON.stringify({collection_id: collection.id, video_id: video.id})
 
+
   return function(dispatch){
     fetch(`http://localhost:3000/api/v1/video_collections/`, {
       method: 'DELETE',
@@ -212,37 +235,6 @@ export function removeVideoFromCollection(collection, video){
     .then((res) => res.json())
     .then((json) => {
       dispatch(removedVideoFromCollection(json))
-    })
-  }
-}
-
-function updatedVideoComment(video, collection){
-  return{
-    type: "UPDATED_VIDEO_COMMENT",
-    videoPayload: video,
-    collectionPayload: collection
-  }
-
-}
-
-export function updateVideoComment(id, comment, collection_id){
-  const body = JSON.stringify({id: id, comment: comment})
-  const jwt = localStorage.getItem("jwtToken")
-  return function(dispatch){
-
-    fetch(`http://localhost:3000/api/v1/videos/${id}`, {
-      method: 'PATCH',
-      body: body,
-      headers: {
-      "Authorization": "Bearer " + jwt,
-       "Accept": "application/json",
-       "Content-Type":"application/json"
-     }
-    })
-    .then((res) => res.json())
-    .then((json) => {
-
-      dispatch(updatedVideoComment(json, collection_id))
     })
   }
 }

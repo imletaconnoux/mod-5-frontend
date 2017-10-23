@@ -4,8 +4,12 @@ import { removeVideoFromCollection } from '../../actions/collections'
 import { connect } from 'react-redux'
 import VideoOverlay from './VideoOverlay'
 import { currentUser } from '../../actions/users'
-import { updateVideoComment } from '../../actions/collections'
+import { updateComment } from '../../actions/comments'
 import { clearRelatedVideos } from '../../actions/youtube'
+
+
+
+
 
 class Video extends React.Component {
 
@@ -17,9 +21,11 @@ class Video extends React.Component {
   }
 
   componentDidMount(){
+
     this.setState({
-      videoComment: this.props.video.comment
+      videoComment: this.props.comment.body
     })
+
   }
 
   closeModal = (event) => {
@@ -36,7 +42,7 @@ class Video extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    this.props.updateVideoComment(this.props.video.id, this.state.videoComment, this.props.collection.id)
+    this.props.updateComment(this.props.comment.id, this.state.videoComment)
   }
 
   handleDelete = (event) => {
@@ -45,7 +51,8 @@ class Video extends React.Component {
   }
 
   render(){
-
+    console.log("LOGGING STATE", this.props)
+    console.log("loggin videos", this.props.video)
 
     const link = `https://www.youtube.com/embed/${this.props.video.youtube_id}`
 
@@ -98,8 +105,8 @@ function mapDispatchToProps(dispatch){
     removeVideoFromCollection: (collection, video) => {
       dispatch(removeVideoFromCollection(collection, video))
     },
-    updateVideoComment: (id, comment, collection_id) => {
-      dispatch(updateVideoComment(id, comment, collection_id))
+    updateComment: (id, body) => {
+      dispatch(updateComment(id, body))
     },
     clearRelatedVideos: () => {
       dispatch(clearRelatedVideos())
@@ -109,7 +116,8 @@ function mapDispatchToProps(dispatch){
 
 function mapStateToProps(state){
   return{
-    relatedVideos: state.youtube.relatedVideos
+    relatedVideos: state.youtube.relatedVideos,
+    user: state.user.currentUser
   }
 }
 

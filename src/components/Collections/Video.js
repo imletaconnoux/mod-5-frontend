@@ -22,7 +22,7 @@ class Video extends React.Component {
     if (this.props.user && this.props.collection.user.id === this.props.user.id){
       return(
         <Grid.Row>
-          <MyCollectionActions video={this.props.video} collection={this.props.collection}/>
+          <MyCollectionActions comment={this.props.comment} video={this.props.video} collection={this.props.collection}/>
         </Grid.Row>
       )
     } else if (this.props.user && this.props.collection.user.id !== this.props.user.id){
