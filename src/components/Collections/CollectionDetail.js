@@ -1,5 +1,4 @@
 import React from 'react'
-
 import CollectionVideos from './CollectionVideos'
 import { connect } from 'react-redux'
 import { fetchCollections } from '../../actions/collections'

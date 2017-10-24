@@ -13,6 +13,7 @@ import CollectionsContainer from './components/Collections/CollectionsContainer.
 import FollowingsContainer from './components/Followings/FollowingsContainer.js'
 import UsersContainer from './components/Users/UsersContainer.js'
 import Authorize from './components/Authorize'
+import TopicsContainer from './components/Topics/TopicsContainer.js'
 
 class App extends Component {
 
@@ -31,6 +32,7 @@ class App extends Component {
           <Route path="/collections" render={(props) => <AuthCollectionsContainer {...props} /> }/>
           <Route path="/following" render={(props) => <FollowingsContainer {...props} /> }/>
           <Route path="/" render={(props) => <AuthUsersContainer {...props} /> }/>
+          <Route path="/topics" render={(props) => <TopicsContainer {...props} />} />
 
 
 

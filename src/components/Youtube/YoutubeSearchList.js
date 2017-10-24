@@ -4,6 +4,7 @@ import { Grid } from 'semantic-ui-react'
 
 const YoutubeSearchList = (props) => {
 
+  console.log(props.videos)
   const youtubeItems = props.videos.map((video, index) => {
     return <YoutubeItem key={index} video={video}/>
   })

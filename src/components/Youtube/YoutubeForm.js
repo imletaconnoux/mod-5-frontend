@@ -9,7 +9,8 @@ class YoutubeForm extends React.Component{
     super()
     this.state = {
       searchInput: "",
-      sortInput: "relevance"
+      sortInput: "relevance",
+      topicInput: ""
     }
   }
 
