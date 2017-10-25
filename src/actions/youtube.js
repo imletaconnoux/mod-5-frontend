@@ -59,7 +59,7 @@ function fetchedRelatedVideos(videos){
 
 export function fetchRelatedVideos(youtubeId){
   return function(dispatch){
-    fetch(`https://www.googleapis.com/youtube/v3/search?&relatedToVideoId=${youtubeId}&key=AIzaSyCB6Tj0pbJk3_X0rbht442Ar-T93EAF-M0&type=video&part=snippet,id&maxResults=12`)
+    fetch(`https://www.googleapis.com/youtube/v3/search?&relatedToVideoId=${youtubeId}&key=AIzaSyCB6Tj0pbJk3_X0rbht442Ar-T93EAF-M0&type=video&part=snippet,id&maxResults=21`)
     .then((res) => res.json())
     .then((json) => {
       dispatch(fetchedRelatedVideos(json.items))

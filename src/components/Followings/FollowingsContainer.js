@@ -13,11 +13,10 @@ class FollowingsContainer extends React.Component{
 
   componentDidMount(){
     this.props.fetchFollowings()
-    console.log("USER IN FOLLOWINGS CONATINER", this.props.user)
   }
 
   render(){
-    console.log(this.props)
+
     return(
       <div>
         <Route exact path="/following" render={(props) => <FollowingsList collections={this.props.following} {...props} />}/>
@@ -26,7 +25,6 @@ class FollowingsContainer extends React.Component{
           const collection = this.props.following.filter((collection) => {
             return collection.id === parseInt(id)
           })
-          console.log(collection)
           return <CollectionDetail collection={collection[0]} {...routeProps}/>
           }} />
       </div>

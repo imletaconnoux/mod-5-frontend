@@ -1,15 +1,13 @@
 import React from 'react'
 import FollowingItem from './FollowingItem'
-import { Grid, Header, Icon } from 'semantic-ui-react'
+import { Grid, Header, Icon, Container } from 'semantic-ui-react'
 
 const FollowingsList = (props) => {
 
-  console.log(props)
 
   const followings = props.collections.map((collection, index) => {
         return ( <FollowingItem key={index} collection={collection} />)
   })
-  console.log("HELLO FROM FOLLOWING LIST")
 
   return (
 
@@ -21,10 +19,11 @@ const FollowingsList = (props) => {
           Browse your favorite collections from other users
         </Header.Subheader>
       </Header>
-        <Grid centered>
-          {followings}
-
-        </Grid>
+        <Container>
+          <Grid centered>
+            {followings}  
+          </Grid>
+        </Container>
       </div>
 
   )
