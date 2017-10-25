@@ -1,6 +1,6 @@
 import React from 'react'
 import CollectionItem from './CollectionItem'
-import { Grid } from 'semantic-ui-react'
+import { Container, Grid } from 'semantic-ui-react'
 
 const CollectionsList = (props) => {
 
@@ -11,12 +11,13 @@ const CollectionsList = (props) => {
 
 
   return (
+    <Container>
+    <Grid stackable columns={2} centered>
 
-    <Grid centered>
 
       {collections}
-
    </Grid>
+   </Container>
   )
 
 }

@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { fetchTopics } from '../../actions/topics'
 import TopicVideos from './TopicVideos'
 import TopicForm from './TopicForm'
+import { Header, Icon, Divider} from 'semantic-ui-react'
 
 
 class TopicDetail extends React.Component{
@@ -24,9 +25,13 @@ class TopicDetail extends React.Component{
       console.log(topic)
       return (
         <div>
-          <h1>Browse Videos Related to: {topic[0].name}</h1>
-            <TopicForm subTopics={topic[0].sub_topics} topic={topic[0]}/>
-
+        <Header as='h1' icon>
+          <Icon name='video play outline' color='red' />
+            Browse videos related to: {topic[0].name}
+          <Header.Subheader>
+          </Header.Subheader>
+        </Header>
+          <TopicForm subTopics={topic[0].sub_topics} topic={topic[0]}/>
           <TopicVideos topic={topic[0]}/>
         </div>
         )

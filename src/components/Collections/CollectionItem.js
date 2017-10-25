@@ -50,6 +50,7 @@ class CollectionItem extends React.Component{
                 </Popup>
                  </p>
               </Segment >
+
               <Segment onClick={this.handleDelete} textAlign='center'>
                 <p>Remove <Icon name="delete"/> </p>
               </Segment>

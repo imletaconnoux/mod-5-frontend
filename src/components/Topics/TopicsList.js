@@ -1,5 +1,5 @@
 import React from 'react'
-import { Header, Icon, Grid } from 'semantic-ui-react'
+import { Container, Header, Icon, Grid } from 'semantic-ui-react'
 import TopicItem from './TopicItem'
 
 const TopicsList = (props) => {
@@ -11,7 +11,7 @@ const TopicsList = (props) => {
 
 
   return (
-    <div>
+    <Container>
       <Header as='h1' icon>
         <Icon name='video play outline' color='red' />
         Browse Videos by Topics!
@@ -22,7 +22,7 @@ const TopicsList = (props) => {
         {topics}
 
       </Grid>
-    </div>
+    </Container>
   )
 
 }
