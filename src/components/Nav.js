@@ -10,10 +10,12 @@ class Nav extends React.Component{
     if (localStorage.getItem('jwtToken')){
     return(
       <div className="ui secondary menu">
+
         <div className="right menu">
           <NavLink activeClassName="inactive" className="item" onClick={this.props.logoutUser} to="/">Logout</NavLink>
         </div>
-        <Menu vertical fixed='left' >
+
+        <Menu vertical fixed='left' className="ui menu">
           <Menu.Item>
             <Menu.Header><NavLink to="/"><Icon name='video play outline' color='red'/>Home</NavLink></Menu.Header>
           </Menu.Item>
@@ -25,7 +27,7 @@ class Nav extends React.Component{
           </Menu.Item>
           <Divider/>
           <Menu.Item>
-            <Menu.Header><NavLink to="/topics">Browse by Topic:</NavLink></Menu.Header>
+            <Menu.Header><NavLink to="/topics">TOPICS</NavLink></Menu.Header>
           </Menu.Item>
           <Menu.Menu>
               <Menu.Item><NavLink to="/topics/1"><Icon name='music' color='red'/>Music</NavLink></Menu.Item>

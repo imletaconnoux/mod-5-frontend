@@ -16,7 +16,6 @@ class Video extends React.Component {
   }
 
   render(){
-    console.log(this.props.collection, this.props.user)
     const link = `https://www.youtube.com/embed/${this.props.video.youtube_id}`
 
     if (this.props.user && this.props.collection.user.id === this.props.user.id){
@@ -34,7 +33,7 @@ class Video extends React.Component {
     }
     else {
       return(
-        <p>Currently loading</p>
+        null
       )
     }
   }

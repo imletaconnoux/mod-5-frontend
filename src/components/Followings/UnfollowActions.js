@@ -24,7 +24,7 @@ class FollowingItem extends React.Component{
               size='medium'
               bordered
               centered
-              label={{ as: 'a', color: 'red', content: `${this.props.collection.name} by ${this.props.collection.user.name}`, ribbon: true }}
+              label={{ as: 'a', color: 'red', content: `${this.props.collection.name} Collection by ${this.props.collection.user.name}`, ribbon: true }}
             />
           </Link>
           <Segment.Group horizontal>
