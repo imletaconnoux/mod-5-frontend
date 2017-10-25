@@ -28,7 +28,7 @@ class FollowCollectionActions extends React.Component {
 
     return(
       <Grid.Column width={7} centered>
-        <Segment>
+        <Segment raised>
           <Segment as='h3'> {this.props.video.title} </Segment>
           <iframe aligned="center" width="560" height="315" src={link}
             frameBorder="0"

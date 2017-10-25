@@ -59,7 +59,7 @@ class Video extends React.Component {
 
     return(
       <Grid.Column width={9} centered>
-      <Segment>
+      <Segment raised>
         <Segment as='h3' >
         {this.props.video.title}
         </Segment>

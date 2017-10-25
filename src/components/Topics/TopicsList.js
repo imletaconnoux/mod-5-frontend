@@ -14,7 +14,7 @@ const TopicsList = (props) => {
     <Container>
       <Header as='h1' icon>
         <Icon name='video play outline' color='red' />
-        Browse Videos by Topics!
+        Browse by Topic!
       </Header>
 
       <Grid centered>
