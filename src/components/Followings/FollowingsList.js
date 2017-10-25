@@ -14,14 +14,11 @@ const FollowingsList = (props) => {
       <div>
       <Header as='h2' icon>
         <Icon name='video play outline' color='red' />
-        Collections I Follow
-        <Header.Subheader>
-          Browse your favorite collections from other users
-        </Header.Subheader>
+        Browse your favorite collections from other users
       </Header>
         <Container>
           <Grid centered>
-            {followings}  
+            {followings}
           </Grid>
         </Container>
       </div>
