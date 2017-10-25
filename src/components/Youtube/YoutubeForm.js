@@ -1,7 +1,7 @@
 import React from 'react'
 import { searchVideos, searchCollections } from '../../actions/youtube'
 import { connect } from 'react-redux'
-import { Grid, Header, Icon, Checkbox, Segment } from 'semantic-ui-react'
+import { Form, Grid, Header, Icon, Checkbox, Segment, Button } from 'semantic-ui-react'
 
 class YoutubeForm extends React.Component{
 
@@ -47,7 +47,7 @@ class YoutubeForm extends React.Component{
     return(
 
       <Grid stackable columns={1} textAlign='center' style={{height: '80%'}} verticalAlign='middle'>
-        <Grid.Column>
+        <Grid.Column width={4}>
         <Header as='h1' icon>
           <Icon name='video play outline' color='red' />
           Welcome to The YouTubist!
@@ -58,38 +58,36 @@ class YoutubeForm extends React.Component{
             Save the videos and follow the collections you like.
           </Header.Subheader>
         </Header>
-        <form onSubmit={this.handleSearch}>
-          <div class="inline fields">
-            <div class="field">
+        <Form onSubmit={this.handleSearch}>
+            <Form.Field>
               <input type="text" value={this.state.searchInput} onChange={this.handleInputChange} placeholder="Enter keyword"/>
-            </div>
-            <label>Sort by: </label>
-            <Checkbox
-              radio
-              label="Relevance"
-              checked={this.state.sortInput === "relevance"}
-              value="relevance"
-              onClick={this.handleSortInput}
-            />
-            <Checkbox
-              radio
-              label="Newest"
-              checked={this.state.sortInput === "date"}
-              value="date"
-              onClick={this.handleSortInput}
-            />
-            <Checkbox
-              radio
-              label="Popularity"
-              checked={this.state.sortInput === "rating"}
-              value="rating"
-              onClick={this.handleSortInput}
-            />
-            <div class="field">
-              <input type="submit" value="Search"/>
-            </div>
-          </div>
-        </form>
+            </Form.Field>
+
+            <Form.Field>
+              <Checkbox
+                radio
+                label="Relevance"
+                checked={this.state.sortInput === "relevance"}
+                value="relevance"
+                onClick={this.handleSortInput}
+              />
+              <Checkbox
+                radio
+                label="Newest"
+                checked={this.state.sortInput === "date"}
+                value="date"
+                onClick={this.handleSortInput}
+              />
+              <Checkbox
+                radio
+                label="Popularity"
+                checked={this.state.sortInput === "rating"}
+                value="rating"
+                onClick={this.handleSortInput}
+              />
+            </Form.Field>
+            <Button type='submit'>Submit</Button>
+        </Form>
         </Grid.Column>
       </Grid>
 

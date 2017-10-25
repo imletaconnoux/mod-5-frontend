@@ -43,7 +43,6 @@ class TopicForm extends React.Component{
   handleSubmit = (event) => {
     event.preventDefault()
     if (this.state.searchInput === "") {
-      console.log
       this.props.searchTopicVideos(this.state.topicInput, this.state.sortInput)
     } else if (this.state.searchInput !== ""){
       this.props.searchTopicVideosWithTerm(this.state.topicInput, this.state.sortInput, this.state.searchInput)
@@ -52,7 +51,6 @@ class TopicForm extends React.Component{
 
   }
   render(){
-    console.log(this.props.topic)
     const subOptions = this.props.subTopics.map((subtopic) => {
       return {
         text: subtopic.name,
@@ -63,7 +61,7 @@ class TopicForm extends React.Component{
 
     return(
       <Grid stackable columns={1} textAlign='center' style={{height: '80%'}} verticalAlign='middle'>
-        <Grid.Column width={14} >
+        <Grid.Column width={4} >
           <Form onSubmit={this.handleSubmit}>
             <Form.Field >
               <Dropdown onChange={this.handleDropDownChange} placeholder='Select a sub-topic' fluid selection options={subOptions} />

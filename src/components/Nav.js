@@ -9,7 +9,7 @@ class Nav extends React.Component{
     if (localStorage.getItem('jwtToken')){
     return(
       <div className="ui secondary menu">
-        <NavLink color='orange' activeClassName="inactive" className="item" to="/">My YouTubist</NavLink>
+        <NavLink color='orange' activeClassName="inactive" className="item" to="/">The YouTubist</NavLink>
         <NavLink activeClassName="active" className="item" to="/topics">Browse by Topic</NavLink>
         <NavLink activeClassName="active" className="item" to="/collections">My Collections</NavLink>
         <NavLink activeClassName="active" className="item" to="/following">Following</NavLink>
