@@ -4,11 +4,14 @@ body {
   font-family: sans-serif;
 }
 
+.app-body{
+  margin: 0px 0px 0px 135px;
 
+}
 
 
 .landing-image {
      background: url('https://cdn-images-1.medium.com/max/1200/1*4scWaOHPNQGTXoppoQJuvQ.jpeg') no-repeat center fixed;
      height:100vh;
-     margin: 0px 40px 0px 0px;
+     margin: 0px 190px 0px 0px;
  }

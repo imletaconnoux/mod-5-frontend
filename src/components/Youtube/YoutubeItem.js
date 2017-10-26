@@ -22,7 +22,7 @@ class YoutubeItem extends React.Component{
     const link = `https://www.youtube.com/embed/${this.props.video.id.videoId}`
     return (
       <Grid.Row>
-      <Grid.Column width={7} centered>
+      <Grid.Column width={8} centered>
         <Segment textAlign='center' raised>
           <Segment as='h3'> {this.props.video.snippet.title}</Segment>
           <iframe aligned="center" width="560" height="315" src={link}

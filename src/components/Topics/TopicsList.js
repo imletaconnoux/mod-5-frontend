@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Header, Icon, Grid } from 'semantic-ui-react'
+import { Container, Header, Icon, Grid, Divider } from 'semantic-ui-react'
 import TopicItem from './TopicItem'
 
 const TopicsList = (props) => {
@@ -12,12 +12,12 @@ const TopicsList = (props) => {
 
   return (
     <Container>
-      <Header as='h1' icon>
+      <Header as='h1'>
         <Icon name='video play outline' color='red' />
         Browse by Topic!
       </Header>
-
-      <Grid centered>
+      <Divider section />
+      <Grid centered padded>
 
         {topics}
 

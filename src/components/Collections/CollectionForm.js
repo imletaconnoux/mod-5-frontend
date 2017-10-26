@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { createCollection } from '../../actions/collections'
-import { Header, Icon, Form, Grid, Button} from 'semantic-ui-react'
+import { Header, Icon, Form, Grid, Button, Container, Divider} from 'semantic-ui-react'
 
 class CollectionForm extends React.Component{
 
@@ -35,14 +35,14 @@ class CollectionForm extends React.Component{
 
   render(){
     return(
-      <div>
-      <Header as='h2' icon>
-        <Icon name='video play outline' color='red' />
-        My Collections
-        <Header.Subheader>
-        </Header.Subheader>
+      <Container>
+      <Header as='h1'>
+      <Icon name='video play outline' color='red' />
+      My Collections
       </Header>
-      <Grid textAlign='center' verticalAlign='middle'>
+      <Divider section />
+
+      <Grid textAlign='center' verticalAlign='right'>
         <Grid.Column width={4}>
           <Form onSubmit={this.handleSubmit}>
             <Form.Group>
@@ -54,7 +54,7 @@ class CollectionForm extends React.Component{
           </Form>
         </Grid.Column>
       </Grid>
-      </div>
+      </Container>
     )
   }
 

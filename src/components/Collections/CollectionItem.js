@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid, Card, Button, Icon, Image, Segment, Form, Popup } from 'semantic-ui-react'
+import { Grid, Card, Button, Icon, Image, Segment, Form, Popup, Divider} from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { deleteCollection } from '../../actions/collections'
 import { connect } from 'react-redux'
@@ -19,7 +19,8 @@ class CollectionItem extends React.Component{
 
 
     return(
-      <Grid.Column width={5} centered>
+
+      <Grid.Column width={5} centered padded>
         <Segment textAlign='center'>
           <Link to={"/collections/" + this.props.collection.id}>
             <Image
@@ -59,6 +60,7 @@ class CollectionItem extends React.Component{
 
 
       </Grid.Column>
+
     )
   }
 

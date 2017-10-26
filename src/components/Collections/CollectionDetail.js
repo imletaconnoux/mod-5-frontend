@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { fetchCollections } from '../../actions/collections'
 import { fetchAllCollections } from '../../actions/followings'
 import { currentUser } from '../../actions/users'
+import { Header, Icon, Divider } from 'semantic-ui-react'
 import { fetchUserComments } from '../../actions/comments'
 
 class CollectionDetail extends React.Component{
@@ -26,7 +27,7 @@ class CollectionDetail extends React.Component{
       console.log(collection)
       return (
         <div>
-          <h1> The {collection[0].name} video collection </h1>
+          <Header as='h1'><Icon name='video play outline' color='red' />{collection[0].name}</Header>
           <CollectionVideos comments={this.props.userComments} videos={collection[0].videos} collection={collection[0]}/>
         </div>
         )

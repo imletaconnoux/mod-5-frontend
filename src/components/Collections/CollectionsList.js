@@ -12,7 +12,7 @@ const CollectionsList = (props) => {
 
   return (
     <Container>
-    <Grid stackable columns={2} centered>
+    <Grid stackable columns={2} centered padded>
 
 
       {collections}

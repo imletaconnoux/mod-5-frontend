@@ -27,16 +27,14 @@ class App extends Component {
     return (
 
       <div className="App">
-
-          <Route path="/" component={Nav}/>
+        <Route path="/" component={Nav}/>
+        <div className="app-body">
           <Route exact path="/" component={ YoutubeContainer } />
           <Route path="/collections" render={(props) => <AuthCollectionsContainer {...props} /> }/>
           <Route path="/following" render={(props) => <FollowingsContainer {...props} /> }/>
           <Route path="/" render={(props) => <AuthUsersContainer {...props} /> }/>
           <Route path="/topics" render={(props) => <AuthTopicsContainer {...props} />} />
-
-
-
+        </div>
       </div>
     )
   }

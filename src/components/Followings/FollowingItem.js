@@ -40,9 +40,7 @@ class FollowingItem extends React.Component{
       }
     } else {
       return(
-        <div>
-          Loading
-        </div>
+        (null)
       )
     }
   }
