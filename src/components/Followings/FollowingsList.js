@@ -12,7 +12,7 @@ const FollowingsList = (props) => {
   return (
 
       <Container>
-      <Header as='h1'><Icon name='video play outline' color='red' />Saved collections from other users</Header>
+      <Header as='h1'><Icon name='video play outline' color='red' />Following</Header>
       <Divider section />
 
           <Grid centered padded>

@@ -14,7 +14,7 @@ const TopicsList = (props) => {
     <Container>
       <Header as='h1'>
         <Icon name='video play outline' color='red' />
-        Browse by Topic!
+        Browse by Topic
       </Header>
       <Divider section />
       <Grid centered padded>
