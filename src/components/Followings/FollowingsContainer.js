@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { Route } from 'react-router-dom'
 import { fetchFollowings } from '../../actions/followings'
 import FollowingsList from './FollowingsList'
-import { Header, Icon, Divider } from 'semantic-ui-react'
 import CollectionDetail from '../Collections/CollectionDetail'
 
 
@@ -23,7 +22,7 @@ class FollowingsContainer extends React.Component{
         <Route path="/collections/:id" render={(routeProps) => {
           const id = routeProps.match.params.id
           const collection = this.props.following.filter((collection) => {
-            return collection.id === parseInt(id)
+            return collection.id === parseInt(id, 10)
           })
           return <CollectionDetail collection={collection[0]} {...routeProps}/>
           }} />

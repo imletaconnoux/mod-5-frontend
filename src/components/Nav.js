@@ -1,6 +1,6 @@
 import React from 'react'
 import { Menu, Icon, Divider } from 'semantic-ui-react'
-import { Link, NavLink, Route } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { logoutUser } from '../actions/users'
 

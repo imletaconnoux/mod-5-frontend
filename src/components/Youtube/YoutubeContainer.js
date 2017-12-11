@@ -12,7 +12,7 @@ class YoutubeContainer extends React.Component {
 
 
   render(){
-    const link = 'http://www.coolpicking.com/wp-content/uploads/2015/01/TV-ADVERTS.jpg'
+    
     if (this.props.collectionsResults.length > 0  || this.props.youtubeResults.length > 0 ) {
       return (
         <div>

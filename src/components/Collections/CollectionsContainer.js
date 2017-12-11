@@ -34,7 +34,7 @@ class CollectionsContainer extends React.Component{
 
           const collection = this.props.collections.filter((collection) => {
 
-            return collection.id === parseInt(id)
+            return collection.id === parseInt(id, 10)
 
 
 
