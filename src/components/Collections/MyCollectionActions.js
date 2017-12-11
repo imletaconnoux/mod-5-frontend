@@ -56,7 +56,6 @@ class Video extends React.Component {
 
     const link = `https://www.youtube.com/embed/${this.props.video.youtube_id}`
 
-
     return(
       <Grid.Column width={11} centered>
       <Segment raised>
