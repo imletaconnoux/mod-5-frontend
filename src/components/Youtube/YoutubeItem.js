@@ -6,6 +6,7 @@ import { createCollectionWithVideo } from '../../actions/collections'
 import { fetchCollections } from '../../actions/collections'
 import VideoOverlay from '../Collections/VideoOverlay'
 import { clearRelatedVideos } from '../../actions/youtube'
+import '../../App.css'
 
 class YoutubeItem extends React.Component{
 
@@ -33,8 +34,9 @@ class YoutubeItem extends React.Component{
               Add to personal collection
               <Popup
                 trigger={<Icon name="plus square outline" size="big" color="red"/>}
-                size='huge'
+                size='big'
                 hoverable
+                className="Popup"
               >
                 <Form>
                   <Form.Field>
@@ -42,8 +44,8 @@ class YoutubeItem extends React.Component{
                   </Form.Field>
                   <PopUp collections={this.props.collections} video={this.props.video} />
 
-                </Form>
-              </Popup>
+                  </Form>
+                      </Popup>
             </Segment>
             <Segment >
               <Modal trigger={

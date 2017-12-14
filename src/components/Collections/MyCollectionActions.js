@@ -51,8 +51,6 @@ class Video extends React.Component {
   }
 
   render(){
-    console.log("LOGGING STATE", this.props)
-    console.log("loggin videos", this.props.video)
 
     const link = `https://www.youtube.com/embed/${this.props.video.youtube_id}`
 
