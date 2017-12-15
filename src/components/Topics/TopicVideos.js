@@ -2,7 +2,6 @@ import React from 'react'
 import {connect} from 'react-redux'
 import { searchTopicVideos } from '../../actions/topics'
 import YoutubeSearchList from '../Youtube/YoutubeSearchList'
-import TopicForm from './TopicForm'
 
 class TopicVideos extends React.Component{
 
@@ -20,7 +19,9 @@ class TopicVideos extends React.Component{
         </div>
       )
     } else {
-      null
+      return(
+        null
+      )
     }
   }
 }

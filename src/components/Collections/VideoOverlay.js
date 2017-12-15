@@ -1,9 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Modal, Form, TextArea, Button, Header, Segment, Popup, Icon } from 'semantic-ui-react'
-import { updateVideoComment } from '../../actions/collections'
+
 import { fetchRelatedVideos } from '../../actions/youtube'
-import RelatedVideosList from './RelatedVideosList'
+
 
 import RelatedVideoLink from './RelatedVideoLink'
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid, Card, Button, Icon, Image, Segment, Form, Popup } from 'semantic-ui-react'
+import { Grid, Icon, Image, Segment } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { clearTopicVideos } from '../../actions/topics'

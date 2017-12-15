@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Dropdown, Grid, Header, Icon, Checkbox, Segment, Button } from 'semantic-ui-react'
+import { Form, Dropdown, Grid, Checkbox, Button } from 'semantic-ui-react'
 import { searchTopicVideos } from '../../actions/topics'
 import { searchTopicVideosWithTerm } from '../../actions/topics'
 import { connect } from 'react-redux'

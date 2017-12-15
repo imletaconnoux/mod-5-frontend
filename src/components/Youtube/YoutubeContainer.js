@@ -12,7 +12,7 @@ class YoutubeContainer extends React.Component {
 
 
   render(){
-    
+
     if (this.props.collectionsResults.length > 0  || this.props.youtubeResults.length > 0 ) {
       return (
         <div>
@@ -38,9 +38,7 @@ class YoutubeContainer extends React.Component {
 function mapStateToProps(state){
   return {
     youtubeResults: state.youtube.youtubeResults,
-    collectionsResults: state.youtube.collectionsResults,
-    isSearching: state.youtube.isSearching
-
+    collectionsResults: state.youtube.collectionsResults
   }
 }
 

@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { fetchTopics } from '../../actions/topics'
 import TopicVideos from './TopicVideos'
 import TopicForm from './TopicForm'
-import { Header, Icon, Divider} from 'semantic-ui-react'
+import { Header, Icon } from 'semantic-ui-react'
 
 
 class TopicDetail extends React.Component{
@@ -20,9 +20,9 @@ class TopicDetail extends React.Component{
     if (this.props.topics.length > 0 ){
       const topic = this.props.topics.filter((topic) => {
 
-        return topic.id === parseInt(this.props.match.params.id)
+        return topic.id === parseInt(this.props.match.params.id, 10)
       })
-      console.log(topic)
+
       return (
         <div>
         <Header as='h1' icon>

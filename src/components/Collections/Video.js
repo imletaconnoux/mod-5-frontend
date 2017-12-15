@@ -1,8 +1,7 @@
 import React from 'react'
-import { Segment, Container, Card, Icon, Header, Grid } from 'semantic-ui-react'
+import {  Grid } from 'semantic-ui-react'
 import { removeVideoFromCollection } from '../../actions/collections'
 import { connect } from 'react-redux'
-import VideoOverlay from './VideoOverlay'
 import { currentUser } from '../../actions/users'
 import MyCollectionActions from './MyCollectionActions'
 import FollowCollectionActions from './FollowCollectionActions'
@@ -16,7 +15,7 @@ class Video extends React.Component {
   }
 
   render(){
-    const link = `https://www.youtube.com/embed/${this.props.video.youtube_id}`
+
 
     if (this.props.user && this.props.collection.user.id === this.props.user.id){
       return(

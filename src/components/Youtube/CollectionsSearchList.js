@@ -1,6 +1,6 @@
 import React from 'react'
 import FollowingItem from '../Followings/FollowingItem'
-import { Grid, Header, Icon } from 'semantic-ui-react'
+import { Grid } from 'semantic-ui-react'
 
 const CollectionsSearchList = (props) => {
 

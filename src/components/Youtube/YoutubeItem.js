@@ -1,8 +1,7 @@
 import React from 'react'
 import PopUp from './PopUp'
-import { Grid, Card, Button, Icon, Divider, Segment, Popup, Form, Modal} from 'semantic-ui-react'
+import { Grid, Icon, Segment, Popup, Form, Modal} from 'semantic-ui-react'
 import { connect } from 'react-redux'
-import { createCollectionWithVideo } from '../../actions/collections'
 import { fetchCollections } from '../../actions/collections'
 import VideoOverlay from '../Collections/VideoOverlay'
 import { clearRelatedVideos } from '../../actions/youtube'
@@ -28,7 +27,7 @@ class YoutubeItem extends React.Component{
           <Segment as='h3'> {this.props.video.snippet.title}</Segment>
           <iframe aligned="center" width="560" height="315" src={link}
           frameBorder="0"
-          allowFullScreen></iframe>
+          allowFullScreen title="Video"></iframe>
           <Segment.Group raised horizontal>
             <Segment>
               Add to personal collection

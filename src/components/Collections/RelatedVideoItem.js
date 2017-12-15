@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid, Segment, Image, Popup, Icon} from 'semantic-ui-react'
+import { Grid, Segment, Image, Icon} from 'semantic-ui-react'
 
 
 

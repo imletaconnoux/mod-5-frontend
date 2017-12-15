@@ -1,6 +1,5 @@
 import React from 'react'
 import PopUpItem from './PopUpItem'
-import { Form,  } from 'semantic-ui-react'
 import PopUpForm from './PopUpForm'
 
 

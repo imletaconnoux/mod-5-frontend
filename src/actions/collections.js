@@ -8,12 +8,12 @@ export function createdCollection(collection){
   }
 }
 
-function createVideo(video) {
-  return {
-    type: "CREATE_VIDEO",
-    payload: video
-  }
-}
+// function createVideo(video) {
+//   return {
+//     type: "CREATE_VIDEO",
+//     payload: video
+//   }
+// }
 
 export function createCollection(name){
   const jwt = localStorage.getItem("jwtToken")

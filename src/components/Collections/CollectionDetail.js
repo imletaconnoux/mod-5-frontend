@@ -1,10 +1,8 @@
 import React from 'react'
 import CollectionVideos from './CollectionVideos'
 import { connect } from 'react-redux'
-import { fetchCollections } from '../../actions/collections'
 import { fetchAllCollections } from '../../actions/followings'
-import { currentUser } from '../../actions/users'
-import { Header, Icon, Divider } from 'semantic-ui-react'
+import { Header, Icon } from 'semantic-ui-react'
 import { fetchUserComments } from '../../actions/comments'
 
 class CollectionDetail extends React.Component{
@@ -18,13 +16,13 @@ class CollectionDetail extends React.Component{
 
 
   render(){
-    console.log(this.props)
+
     if (this.props.allCollections.length > 0 && this.props.userComments.length > 0 ){
       const collection = this.props.allCollections.filter((collection) => {
 
-        return collection.id === parseInt(this.props.match.params.id)
+        return collection.id === parseInt(this.props.match.params.id, 10)
       })
-      console.log(collection)
+
       return (
         <div>
           <Header as='h1'><Icon name='video play outline' color='red' />{collection[0].name}</Header>

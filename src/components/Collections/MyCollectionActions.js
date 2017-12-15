@@ -1,9 +1,8 @@
 import React from 'react'
-import { Divider, Grid, Segment, Container, Card, Icon, Header, Modal, Form, TextArea, Button } from 'semantic-ui-react'
+import { Divider, Grid, Segment, Icon, Header, Modal, Form, TextArea, Button } from 'semantic-ui-react'
 import { removeVideoFromCollection } from '../../actions/collections'
 import { connect } from 'react-redux'
 import VideoOverlay from './VideoOverlay'
-import { currentUser } from '../../actions/users'
 import { updateComment } from '../../actions/comments'
 import { clearRelatedVideos } from '../../actions/youtube'
 
@@ -64,7 +63,7 @@ class Video extends React.Component {
             <Segment>
               <iframe aligned="center" width="560" height="315" src={link}
                 frameBorder="0"
-                allowFullScreen></iframe>
+                allowFullScreen title="Video"></iframe>
             </Segment>
             <Segment>
                 <Header size='em'>Your video comments:</Header>

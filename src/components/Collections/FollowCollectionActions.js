@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid, Segment, Icon, Header, Popup, Form, Modal} from 'semantic-ui-react'
+import { Grid, Segment, Icon, Popup, Form, Modal} from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import PopUp from '../Youtube/PopUp'
 import { fetchCollections } from '../../actions/collections'
@@ -32,7 +32,7 @@ class FollowCollectionActions extends React.Component {
           <Segment as='h3'> {this.props.video.title} </Segment>
           <iframe aligned="center" width="560" height="315" src={link}
             frameBorder="0"
-            allowFullScreen></iframe>
+            allowFullScreen title="Video"></iframe>
 
             <Segment.Group raised horizontal>
               <Segment>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Modal, Form, Grid, Button, Header, Segment, Popup, Icon } from 'semantic-ui-react'
+import { Modal, Form, Grid, Header, Segment, Popup, Icon } from 'semantic-ui-react'
 import RelatedVideosList from './RelatedVideosList'
 import PopUp from '../Youtube/PopUp'
 import { connect } from 'react-redux'
@@ -7,7 +7,7 @@ import { connect } from 'react-redux'
 class RelatedVideoLink extends React.Component{
 
   render(){
-    console.log("RELATED VIDEO LINK", this.props.collections)
+
     return(
 
       <Segment>
@@ -17,7 +17,7 @@ class RelatedVideoLink extends React.Component{
           <Grid.Column width={13} centered>
           <Segment textAlign='center'>
           <Segment as='h3'> {this.props.video.snippet.title} </Segment>
-        <iframe wrapped width="560" height="315" verticallyAligned="center" src={this.props.link} frameBorder="0" allowFullScreen></iframe>
+        <iframe wrapped width="560" height="315" verticallyAligned="center" src={this.props.link} frameBorder="0" allowFullScreen title="Video"></iframe>
           <Segment raised>
             Add to personal collection
             <Popup

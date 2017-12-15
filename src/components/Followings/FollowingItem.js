@@ -1,11 +1,8 @@
 import React from 'react'
-import { Grid, Card, Button, Icon, Image, Segment, Form, Popup } from 'semantic-ui-react'
-import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import UnfollowActions from './UnfollowActions'
 import FollowActions from './FollowActions'
 import { currentUser } from '../../actions/users'
-import CollectionItem from '../Collections/CollectionItem'
 import { fetchFollowings } from '../../actions/followings'
 
 class FollowingItem extends React.Component{

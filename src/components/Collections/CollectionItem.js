@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid, Card, Button, Icon, Image, Segment, Form, Popup, Divider} from 'semantic-ui-react'
+import { Grid, Icon, Image, Segment, Popup } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { deleteCollection } from '../../actions/collections'
 import { connect } from 'react-redux'

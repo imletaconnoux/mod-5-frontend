@@ -24,7 +24,7 @@ class TopicsContainer extends React.Component{
 
             const topic = this.props.topics.filter((topic) => {
 
-              return topic.id === parseInt(id)
+              return topic.id === parseInt(id, 10)
 
 
 
