@@ -21,10 +21,8 @@ class FollowCollectionActions extends React.Component {
     this.props.clearRelatedVideos()
   }
   render(){
-    console.log("FOLLOW COLLECTION ACTION", this.props)
 
     const link = `https://www.youtube.com/embed/${this.props.video.youtube_id}`
-
 
     return(
       <Grid.Column width={8} centered>
@@ -47,7 +45,6 @@ class FollowCollectionActions extends React.Component {
                     <label>Save to an existing collection:</label>
                   </Form.Field>
                   <PopUp collections={this.props.collections} video={this.props.video} />
-
                 </Form>
               </Popup>
               </Segment>
