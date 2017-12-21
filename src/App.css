@@ -33,6 +33,10 @@
   to { transform: rotate(360deg); }
 }
 
+.Youtube-checkbox{
+  margin-right: 18px;
+}
+
 .Video-container{
   /*width: 100%;*/
   padding-top: 56.25%;
@@ -50,7 +54,4 @@
   left: 0;
   bottom: 0;
   right: 0;
-
-
-
 }

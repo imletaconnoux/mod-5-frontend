@@ -1,7 +1,8 @@
 import React from 'react'
 import { searchVideos, searchCollections } from '../../actions/youtube'
 import { connect } from 'react-redux'
-import { Form, Grid, Header, Icon, Checkbox, Button } from 'semantic-ui-react'
+import { Form, Grid, Header, Icon, Checkbox, Button, Dropdown } from 'semantic-ui-react'
+import '../../App.css'
 
 class YoutubeForm extends React.Component{
 
@@ -22,6 +23,8 @@ class YoutubeForm extends React.Component{
   }
 
   handleSortInput = (event, {value}) => {
+    
+    console.log(value)
     event.preventDefault()
     this.setState({
       sortInput: value
@@ -36,14 +39,15 @@ class YoutubeForm extends React.Component{
     } else if (this.state.searchInput !== ""){
       this.props.searchVideos(this.state.searchInput, this.state.sortInput)
     }
-    this.setState({
-      searchInput: "",
-      sortInput: "relevance"
-    })
+    // this.setState({
+    //   searchInput: "",
+    //   sortInput: "relevance"
+    // })
   }
 
   render(){
 
+    const sortOptions = [{key: "relevance", value: "relevance", text: "Relevance"}, {key: "date", value: "date", text: "Newest"}, {key: "rating", value: "rating", text: "Popularity"} ]
     return(
 
       <Grid stackable columns={1} textAlign='center' style={{height: '80%'}} verticalAlign='middle'>
@@ -64,27 +68,7 @@ class YoutubeForm extends React.Component{
             </Form.Field>
 
             <Form.Field>
-              <Checkbox
-                radio
-                label="Relevance"
-                checked={this.state.sortInput === "relevance"}
-                value="relevance"
-                onClick={this.handleSortInput}
-              />
-              <Checkbox
-                radio
-                label="Newest"
-                checked={this.state.sortInput === "date"}
-                value="date"
-                onClick={this.handleSortInput}
-              />
-              <Checkbox
-                radio
-                label="Popularity"
-                checked={this.state.sortInput === "rating"}
-                value="rating"
-                onClick={this.handleSortInput}
-              />
+              <Dropdown selection placeholder="Sort by:" options={sortOptions} onChange={this.handleSortInput}/>
             </Form.Field>
             <Button type='submit'>Submit</Button>
         </Form>
