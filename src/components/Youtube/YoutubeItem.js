@@ -25,9 +25,11 @@ class YoutubeItem extends React.Component{
       <Grid.Column width={8} centered>
         <Segment textAlign='center' raised>
           <Segment as='h3'> {this.props.video.snippet.title}</Segment>
-          <iframe aligned="center" width="560" height="315" src={link}
-          frameBorder="0"
-          allowFullScreen title="Video"></iframe>
+          <div className="Video-container">
+            <iframe className="Video-iframe" aligned="center" src={link}
+            frameBorder="0"
+            allowFullScreen title="Video"></iframe>
+          </div>
           <Segment.Group raised horizontal>
             <Segment>
               Add to personal collection
